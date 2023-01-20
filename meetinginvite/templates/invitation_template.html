@@ -1,0 +1,368 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+  <main>
+
+    {% include 'includes/pre-loader.html' %}
+
+    <!-- Hero -->
+    <section class="section-header-image">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-12 col-md-12 col-lg-12 text-center text-md-left">
+
+
+            <img src="{% static 'assets/img/HEADER.jpg' %}" alt="header-img">
+            <div class="my-countdown"></div>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-image ">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-12 col-md-12 col-lg-12 text-center text-md-left">
+
+            <img src="{% static 'assets/img/TITLE.jpg' %}" alt="header-img">
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End of Hero section -->
+    <!-- Section -->
+    <!-- Section -->
+    <section class="section section-lg">
+      <div class="container">
+        <div class="row mb-5 mb-lg-6">
+          <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+            <h2 class="h1 mb-4">¿Dónde y Cuándo?</h2>
+          </div>
+        </div>
+        <div class="row mb-5 mb-lg-6">
+          <div class="col-12 col-md-6 col-lg-6 mb-6 mb-lg-6">
+            <div class="card shadow border-gray-300">
+              <img src="{% static 'assets/img/CEREMONIA1-IMGiglesia.jpg' %}" class="card-img-top rounded-top"
+                   alt="Joseph Portrait">
+              <div class="card-body">
+                <h3 class="h4 card-title mb-2">Ceremonia religiosa</h3>
+                <span class="card-subtitle text-gray fw-normal">Parroquia San Juan Bautista </span>
+                <p class="card-text my-3">Cuándo: 28 de enero de 2023 19:00 hrs. </p>
+                <p class="card-text my-3">Dirección: P.º Villahermosa 120, Plaza Villahermosa, 86179
+                  Villahermosa, Tab., México </p>
+                <div class="card-text my-3">
+                  <div class="row">
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="button">
+                                            <span class="me-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-geo-alt"
+                                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                      d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                                    <path
+                                                      d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                </svg></span>
+                        Mapa
+                      </button>
+
+
+                      <button class="btn btn-primary" type="button">
+                        Agendar en el calendario
+                        <span class="ms-1"><span class="fas fa-book-open"></span></span>
+                      </button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-6 mb-6 mb-lg-6">
+            <div class="card shadow border-gray-300">
+              <img src="{% static 'assets/img/CEREMONIA2-IMGhotel.webp' %}" class="card-img-top rounded-top"
+                   alt="Bonnie portrait">
+              <div class="card-body">
+                <h3 class="h4 card-title mb-2">Hotel Tabasco Inn</h3>
+                <span class="card-subtitle text-gray fw-normal"><strong>Cuándo</strong>: 28 de enero de 2023
+                                20:00 hrs. </span>
+                <p class="card-text my-3"><strong>Dirección</strong>Avenida José Pages 150, Col. Arboledas,
+                  86079 Villahermosa, Tab., México.</p>
+                <div class="card-text my-3">
+                  <div class="row">
+                    <div class="col-12">
+                      <button class="btn btn-primary" type="button">
+                                            <span class="me-1"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-geo-alt"
+                                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                      d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                                                    <path
+                                                      d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                </svg></span>
+                        Mapa
+                      </button>
+
+
+                      <button class="btn btn-primary" type="button">
+                        Agendar en el calendario
+                        <span class="ms-1"><span class="fas fa-book-open"></span></span>
+                      </button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5 mb-lg-6">
+            <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+              <h2 class="h1 mb-4">Galeria de fotos</h2>
+            </div>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static 'assets/img/carousel/image-1.jpg' %}" class="d-block w-100"
+                       alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'assets/img/carousel/image-2.jpg' %}" class="d-block w-100"
+                       alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'assets/img/carousel/image-3.jpg' %}" class="d-block w-100"
+                       alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                      data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                      data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="row mb-5 mb-lg-6">
+          <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+            <h2 class="h1 mb-4">Mis padres</h2>
+          </div>
+        </div>
+        <section class="section section-lg pb-0">
+          <div class="container">
+            <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+              <h2 class="h1 mb-4">Mesa de regalos</h2>
+              <p class="text my-6">
+                Tu compañía es, definitivamente, mi mejor regalo. Pero si quieres obsequiarme algo adicional, ésta es
+                una sugerencia:
+            </div>
+            <div class="row justify-content-center mb-0 mb-md-6">
+              <div class="col-6 col-md-3 text-center mb-5 mb-md-0">
+                <div class="mb-2 mb-md-3">
+
+                  <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51055060" target="_blank">
+                    <img src="{% static 'assets/img/Liverpool.jpg' %}" class="d-block w-100"
+                         alt="...">
+                  </a>
+                </div>
+                <h2 class="h4">#Numero</h2>
+              </div>
+              <div class="col-6 col-md-3 text-center mb-5 mb-md-0">
+                <div class="mb-2 mb-md-3">
+                  <img src="{% static 'assets/img/Palacio.jpg' %}" class="d-block w-100"
+                       alt="...">
+                </div>
+                <h2 class="h4">#Numero</h2>
+              </div>
+              <div class="col-6 col-md-3 text-center mb-5 mb-md-0">
+                <div class="mb-2 mb-md-3">
+                  <img src="{% static 'assets/img/Sears.png' %}" class="d-block w-100"
+                       alt="...">
+
+                </div>
+                <h2 class="h4">#Numero</h2>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
+        <section class="section section-lg pb-0">
+          <div class="container">
+            <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+              <h2 class="h1 mb-4">Datos bancarios para transferencia</h2>
+              <p class="text my-6">
+                Si no tienes idea que regalarme “Lluvia de sobres” es una tradición de regalar dinero en efectivo a la
+                quinceañera.</p>
+            </div>
+            <div class="row justify-content-center mb-0 mb-md-6">
+              <div class="col-6 col-md-3 text-center mb-5 mb-md-0">
+                <div class="mb-2 mb-md-3">
+                  <img src="{% static 'assets/img/transferencias.webp' %}" class="d-block w-100"
+                       alt="...">
+
+                </div>
+              </div>
+              <div class="col-6 col-md-3 text-center mb-5 mb-md-0">
+                <div class="mb-2 mb-md-3">
+                  <br class="text-center">
+                  <p>Bancomer</p>
+                  <p>4152 3140 1620 4102</p>
+                  <p>Estefania Itzel Sagahón Gallegos </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials">
+
+          <div class="testimonial-item">
+            <h3>John Larson</h3>
+            <h4>Entrepreneur</h4>
+            <p>
+              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa
+              labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+            </p>
+          </div>
+
+
+        </section><!-- End Testimonials Section -->
+
+
+        <section id="testimonials" class="testimonials2">
+
+          <div class="testimonial-item">
+            <h3>Confirmar asistencia</h3>
+            <h4>Por favor confirmar tu asistencia con tu nombre completo en la presente invitación a Chandelier
+              eventos</h4>
+            <a href="https://api.whatsapp.com/send?phone=5219934294179&text=Confirmo asistencia al evento de Estefanía. Mi Nombre es"
+               style="display: inline-block; padding:16px; border-radius: 8px; background-color: #25D366; color: #fff; text-decoration: none; font-family: sans-serif; font-size: 16px;">Confirmar ahora</a>
+          </div>
+
+
+        </section><!-- End Testimonials Section -->
+
+        {#        <section class="section section-lg pb-0">#}
+        {#          <div class="container">#}
+        {#            <div class="row">#}
+        {#              <div class="col-12 col-md-6 col-lg-6 mb-6 mb-lg-6">#}
+        {#                <img src="{% static 'assets/img/instagram.webp' %}" class="d-block w-1000"#}
+        {#                     alt="...">#}
+        {#              </div>#}
+        {#            </div>#}
+        {#          </div>#}
+        {#        </section>#}
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-8">
+            <!-- Contact Card -->
+            <div class="card border-0 p-2 p-md-3 p-lg-5">
+              <div class="card-header bg-white border-0 text-center">
+                <h2>Want to work with us?</h2>
+                <p>Cool! Let’s talk about your project</p>
+              </div>
+              <div class="card-body pt-0">
+                <form action="#">
+                  <!-- Form -->
+                  <div class="mb-4">
+                    <label for="name">Your Name</label>
+                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon3"><span
+                                          class="fas fa-user-circle"></span></span>
+                      <input type="text" class="form-control" placeholder="e.g. Bonnie Green"
+                             id="name" required>
+                    </div>
+                  </div>
+                  <!-- End of Form -->
+                  <!-- Form -->
+                  <div class="mb-4">
+                    <label for="email">Your Email</label>
+                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon4"><span
+                                          class="fas fa-envelope"></span></span>
+                      <input type="email" class="form-control" placeholder="example@company.com"
+                             id="email" required>
+                    </div>
+                  </div>
+                  <!-- End of Form -->
+                  <div class="mb-4">
+                    <label for="message">Your Message</label>
+                    <textarea placeholder="Your message" class="form-control" id="message" rows="4"
+                              required></textarea>
+                  </div>
+                  <!-- End of Form -->
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-secondary">Send message</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End of Contact Card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End of section -->
+  </main>
+
+  <!--     <script src="{% static 'simplyCountdown\dist\simplyCountdown.min.js' %}"></script>
+    <link type="text/css" href="{% static 'css/simplyCountdown.theme.custom.css' %}" rel="stylesheet">
+
+    <script>
+
+    let myElement = document.querySelector('.my-countdown');
+    simplyCountdown(myElement, {
+            year: 2023, // required
+            month: 2, // required
+            day: 28, // required
+            hours: 0, // Default is 0 [0-23] integer
+            minutes: 0, // Default is 0 [0-59] integer
+            seconds: 0, // Default is 0 [0-59] integer
+            words: { //words displayed into the countdown
+                days: { singular: 'Día', plural: 'Días' },
+                hours: { singular: 'Hora', plural: 'Horas' },
+                minutes: { singular: 'minute', plural: 'minutes' },
+                seconds: { singular: 'second', plural: 'seconds' }
+            },
+            plural: true, //use plurals
+            inline: false, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
+            inlineClass: 'simply-countdown-inline', //inline css span class in case of inline = true
+            // in case of inline set to false
+            enableUtc: true, //Use UTC or not - default : false
+            onEnd: function() { return; }, //Callback on countdown end, put your own function here
+            refresh: 1000, // default refresh every 1s
+            sectionClass: 'simply-section', //section css class
+            amountClass: 'simply-amount', // amount css class
+            wordClass: 'simply-word', // word css class
+            zeroPad: false,
+            countUp: false
+    });
+
+    </script> -->
+
+
+
+  {% include 'includes/cta-careers.html' %}
+
+{% endblock content %}
+
+{% block footer %}
+
+  {% include 'includes/cta-footer.html' %}
+
+{% endblock footer %}
