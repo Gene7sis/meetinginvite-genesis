@@ -18,7 +18,7 @@ urlpatterns = [
     path("users/", include("meetinginvite.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("invitations/", include("meetinginvite.invitations.urls", namespace="users")),
+    path("invitations/", include("meetinginvite.invitations.urls", namespace="invitations")),
 
     path('', include('theme_pixel.urls')),  #  <-- NEW
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
