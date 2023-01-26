@@ -62,7 +62,7 @@ class GiftTable(Model):
 class Place(Model):
     invitation = models.ForeignKey(InvitationBase, on_delete=models.CASCADE)
     ceremony_name = CharField(_("Nombre del lugar de la ceremonia"), blank=True, max_length=255)
-    address_ceremony = CharField(_("Dirección de la ceremonia"), blank=True, max_length=255)
+    ceremony_address = CharField(_("Dirección de la ceremonia"), blank=True, max_length=255)
     ceremony_when = models.DateTimeField()
     ceremony_map = models.URLField(null=True, blank=True)
     ceremony_image = models.ImageField(upload_to='places', null=True, blank=True)
