@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils.text import slugify
+import uuid
+import csv
 
 
 class InvitationBase(Model):
@@ -13,9 +15,7 @@ class InvitationBase(Model):
         BAPTISM = 2, _('MI BAUTIZO')
         __empty__ = _('(Pendiente)')
 
-
-
-    slug = SlugField(_("Slug"), blank=True, max_length=255, unique=True )
+    slug = SlugField(_("Slug"), blank=True, max_length=255, unique=True)
     name_event = CharField(_("Nombre del evento"), blank=True, max_length=255)
     type_event = models.IntegerField(choices=Event.choices)
     date_until_event = models.DateTimeField()
@@ -37,12 +37,12 @@ class InvitationBase(Model):
 
     def save(self, *args, **kwargs):  # new
         if not self.slug:
-
             self.slug = slugify(f"{self.get_type_event_display()}-{self.name_event}")
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("invitation_detail", kwargs={"slug": self.slug})
+
 
 class GiftTable(Model):
     invitation = models.ForeignKey(InvitationBase, on_delete=models.CASCADE)
@@ -93,3 +93,71 @@ class ConfirmationWhatsapp(Model):
 
     def __str__(self):
         return '{}-{}-{}'.format(self.invitation.name_event, self.name_contact, self.phone_number)
+
+
+def _random_uuid():
+    return uuid.uuid4().hex
+
+
+class Party(models.Model):
+    """
+    A party consists of one or more guests.
+    """
+    invitation = models.ForeignKey(InvitationBase, on_delete=models.CASCADE)
+    name = models.TextField()
+    number_of_people = models.IntegerField(default=0)
+    adult = models.IntegerField(default=0)
+    child = models.IntegerField(default=0)
+    observations = models.CharField(max_length=200, blank=True)
+    phone_number = models.CharField(max_length=12, blank=True)
+    save_the_date_sent = models.DateTimeField(null=True, blank=True, default=None)
+    save_the_date_opened = models.DateTimeField(null=True, blank=True, default=None)
+    invitation_code = SlugField(_("Party Slug"), blank=True, max_length=255, unique=True, default=_random_uuid)
+    invitation_sent = models.DateTimeField(null=True, blank=True, default=None)
+    invitation_opened = models.DateTimeField(null=True, blank=True, default=None)
+    is_invited = models.BooleanField(default=False)
+    is_attending = models.BooleanField(default=None, null=True)
+    comments = models.TextField(null=True, blank=True)
+    arrived = models.BooleanField(default=None, null=True)
+
+    def __str__(self):
+        return 'Party: {}'.format(self.name)
+
+    @classmethod
+    def in_default_order(cls):
+        return cls.objects.order_by('-is_invited', 'name')
+
+
+def save():
+    with open('invitations.csv', 'r', encoding = "ISO-8859-1") as f:
+        reader = csv.reader(f)
+        next(reader, None)
+
+        for row in reader:
+            if row[3] == '':
+                child = 0
+            else:
+                child = row[3]
+            if row[7] == 'Digital':
+                Party.objects.create(
+                    invitation_id=5,
+                    name=row[0],
+                    number_of_people=row[1],
+                    adult=row[2],
+                    child=child,
+                    phone_number=row[5],
+                    observations=row[6],
+                    comments=row[8],
+                    is_invited=True
+                )
+            else:
+                Party.objects.create(
+                    invitation_id=5,
+                    name=row[0],
+                    number_of_people=row[1],
+                    adult=row[2],
+                    child=child,
+                    comments=row[8],
+
+                )
+

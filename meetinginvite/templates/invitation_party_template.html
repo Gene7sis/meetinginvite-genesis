@@ -42,7 +42,7 @@
             <h2 id="wherewhen" class="h1 mb-4">¿Dónde y Cuándo?</h2>
           </div>
         </div>
-        {% for place in object.place_set.all %}
+        {% for place in object.invitation.place_set.all %}
           <div class="row mb-5 mb-lg-6">
             <div class="col-12 col-md-6 col-lg-6 mb-6 mb-lg-6">
               <div class="card shadow border-gray-300">
@@ -127,33 +127,33 @@
           </div>
           <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
-              {% if object.carrousel_img_1 %}
+              {% if object.invitation.carrousel_img_1 %}
                 <div class="carousel-item active">
-                  <img src="{{ MEDIA_URL }}{{ object.carrousel_img_1 }}" class="d-block w-100"
+                  <img src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_1 }}" class="d-block w-100"
                        alt="...">
                 </div>
               {% endif %}
-              {% if object.carrousel_img_2 %}
+              {% if object.invitation.carrousel_img_2 %}
                 <div class="carousel-item">
-                  <img src="{{ MEDIA_URL }}{{ object.carrousel_img_2 }}" class="d-block w-100"
+                  <img src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_2 }}" class="d-block w-100"
                        alt="...">
                 </div>
               {% endif %}
-              {% if object.carrousel_img_3 %}
+              {% if object.invitation.carrousel_img_3 %}
                 <div class="carousel-item">
-                  <img src="{{ MEDIA_URL }}{{ object.carrousel_img_3 }}" class="d-block w-100"
+                  <img src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_3 }}" class="d-block w-100"
                        alt="...">
                 </div>
               {% endif %}
-              {% if object.carrousel_img_4 %}
+              {% if object.invitation.carrousel_img_4 %}
                 <div class="carousel-item">
-                  <img src="{{ MEDIA_URL }}{{ object.carrousel_img_4 }}" class="d-block w-100"
+                  <img src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_4 }}" class="d-block w-100"
                        alt="...">
                 </div>
               {% endif %}
-              {% if object.carrousel_img_5 %}
+              {% if object.invitation.carrousel_img_5 %}
                 <div class="carousel-item">
-                  <img src="{{ MEDIA_URL }}{{ object.carrousel_img_5 }}" class="d-block w-100"
+                  <img src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_5 }}" class="d-block w-100"
                        alt="...">
                 </div>
               {% endif %}
@@ -171,9 +171,11 @@
           </div>
         </div>
 
-        <div class="row mb-5 mb-lg-6">
+        <div class="row mb-5 mb-lg-6 card"  style="background-color: #fbc1c1;">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 class="h1 mb-4">{{ party.name }} -------------------</h2>
+            <h2 class="h1 mb-4 text-center">{{ party.name }} </h2>
+            <h3 class="h1 mb-4">{{ party.adult }} adultos</h3>
+            <h5 class="h1 mb-4">{{ party.comments }}</h5>
           </div>
         </div>
 
@@ -364,7 +366,7 @@
     const {DateTime} = luxon;
 
     // Set the target date for the countdown
-    const targetDate = DateTime.fromISO("{{ object.date_until_event.isoformat }}");
+    const targetDate = DateTime.fromISO("{{ object.invitation.date_until_event.isoformat }}");
 
 
     // Function to update the countdown counter
