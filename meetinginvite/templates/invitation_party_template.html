@@ -1,10 +1,27 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
 <!-- Boostrap -->
+<style>
+  #countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    font-family: Arial, sans-serif;
+  }
+
+  .countdown-element-meetinginvite {
+    padding: 0 20px;
+    background-color: whitesmoke;
+    font-size: 50px;
+  }
+</style>
 {% block content %}
   <main>
 
     {% include 'includes/pre-loader.html' %}
+
 
     <!-- Hero -->
     <section class="section-header-image">
@@ -14,9 +31,45 @@
 
 
             <img src="{% static 'assets/img/HEADER.jpg' %}" alt="header-img">
-            <div class="my-countdown"></div>
-
-
+            <body>
+            <div class="container py-4 py-xl-5">
+              <h1 style="text-align: center;">¡Nos casamos!</h1>
+              <div class="row gy-4 row-cols-2 row-cols-md-4">
+                <div class="col">
+                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
+                    <div class="px-3">
+                      <h2 class="fw-bold mb-0" id="days"></h2>
+                      <p class="mb-0" >Días</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
+                    <div class="px-3">
+                      <h2 class="fw-bold mb-0" id="hours"></h2>
+                      <p class="mb-0">Horas</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
+                    <div class="px-3">
+                      <h2 class="fw-bold mb-0" id="minutes"></h2>
+                      <p class="mb-0">Minutos</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3">
+                    <div class="px-3">
+                      <h2 class="fw-bold mb-0" id="seconds"></h2>
+                      <p class="mb-0">Segundos</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </body>
           </div>
         </div>
       </div>
@@ -35,6 +88,7 @@
     <!-- End of Hero section -->
     <!-- Section -->
     <!-- Section -->
+
     <section class="section section-lg">
       <div class="container">
         <div class="row mb-5 mb-lg-6">
@@ -171,7 +225,7 @@
           </div>
         </div>
 
-        <div class="row mb-5 mb-lg-6 card"  style="background-color: #fbc1c1;">
+        <div class="row mb-5 mb-lg-6 card" style="background-color: #fbc1c1;">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
             <h2 class="h1 mb-4 text-center">{{ party.name }} </h2>
             <h3 class="h1 mb-4">{{ party.adult }} adultos</h3>
@@ -353,42 +407,47 @@
     </section>
     <!-- End of section -->
   </main>
-  <div id="countdown">------------------
-
-
-  </div>
 
 
 
-  <script src=" https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
 
   <script>
-    const {DateTime} = luxon;
+    // Set the date we're counting down to
+    var countDownDate = new Date("{{ object.invitation.date_until_event.isoformat }}").getTime();
 
-    // Set the target date for the countdown
-    const targetDate = DateTime.fromISO("{{ object.invitation.date_until_event.isoformat }}");
+    // Update the count down every 1 second
+    var x = setInterval(function () {
 
+      // Get todays date and time
+      var now = new Date().getTime();
 
-    // Function to update the countdown counter
-    function updateCounter() {
-      const now = DateTime.now().setZone("America/Mexico_City");
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
 
-      const diff = targetDate.diff(now, ["years", "months", "days", "hours", "minutes", "seconds"])
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+      // Display the result in the element with id="countdown"
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
 
-      const days = diff.toObject().days;
-      const hours = diff.toObject().hours;
-      const minutes = diff.toObject().minutes;
-      const seconds = diff.toObject().seconds;
-
-
-      // Update the HTML element with the countdown counter
-      document.querySelector('#countdown').innerHTML = `${days} Días, ${hours} horas, ${minutes} minutos, y ${seconds} segundos`;
-    }
-
-    // Call the updateCounter function every second
-    setInterval(updateCounter, 1000);
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRADO";
+      }
+    }, 1000);
   </script>
+
+
+
 
 {% endblock content %}
 
