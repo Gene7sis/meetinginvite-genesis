@@ -351,43 +351,6 @@
     </section>
     <!-- End of section -->
   </main>
-  <div id="countdown">------------------
-
-
-  </div>
-
-
-
-  <script src=" https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js "></script>
-
-  <script>
-    const {DateTime} = luxon;
-
-    // Set the target date for the countdown
-    const targetDate = DateTime.fromISO("{{ object.date_until_event.isoformat }}");
-
-
-    // Function to update the countdown counter
-    function updateCounter() {
-      const now = DateTime.now().setZone("America/Mexico_City");
-
-      const diff = targetDate.diff(now, ["years", "months", "days", "hours", "minutes", "seconds"])
-
-
-      const days = diff.toObject().days;
-      const hours = diff.toObject().hours;
-      const minutes = diff.toObject().minutes;
-      const seconds = diff.toObject().seconds;
-
-
-      // Update the HTML element with the countdown counter
-      document.querySelector('#countdown').innerHTML = `${days} Días, ${hours} horas, ${minutes} minutos, y ${seconds} segundos`;
-    }
-
-    // Call the updateCounter function every second
-    setInterval(updateCounter, 1000);
-  </script>
-
 {% endblock content %}
 
 {% block footer %}
