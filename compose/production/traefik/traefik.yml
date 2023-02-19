@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`meetinginvite.mx`) || Host(`www.meetinginvite.mx`)"
+      rule: "Host(`meetinginvite.tech`) || Host(`www.meetinginvite.tech`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`meetinginvite.mx`)"
+      rule: "Host(`meetinginvite.tech`)"
       entryPoints:
         - flower
       service: flower

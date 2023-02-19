@@ -46,18 +46,3 @@ services:
 
   redis:
     image: redis:6
-
-  celeryworker:
-    <<: *django
-    image: meetinginvite_production_celeryworker
-    command: /start-celeryworker
-
-  celerybeat:
-    <<: *django
-    image: meetinginvite_production_celerybeat
-    command: /start-celerybeat
-
-  flower:
-    <<: *django
-    image: meetinginvite_production_flower
-    command: /start-flower
