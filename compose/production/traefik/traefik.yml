@@ -55,10 +55,7 @@ http:
         servers:
           - url: http://django:5000
 
-    flower:
-      loadBalancer:
-        servers:
-          - url: http://flower:5555
+
 
 providers:
   # https://docs.traefik.io/master/providers/file/
