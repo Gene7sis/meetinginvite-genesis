@@ -15408,7 +15408,7 @@ textarea.form-control-lg {
     .headroom--not-top.navbar-theme-secondary .navbar-brand-dark {
       display: block; }
     .headroom--not-top.navbar-theme-secondary .nav-link {
-      color: rgba(255, 255, 255, 0.9); }
+      color: rgba(16, 16, 16, 0.9); }
       .headroom--not-top.navbar-theme-secondary .nav-link:hover {
         color: white; }
   .headroom--not-top.navbar-theme-tertiary {
@@ -15949,7 +15949,7 @@ textarea.form-control-lg {
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover; }
-  
+
 
 @media (min-width: 576px) {
   .section {
