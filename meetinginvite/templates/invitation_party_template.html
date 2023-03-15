@@ -32,7 +32,7 @@
           <div class="col-12 col-md-12 col-lg-12 text-center text-md-left">
             <img src="{% static 'assets/img/HEADER.jpg' %}" alt="header-img">
             <body
-              style="background: url('https://ana-care.s3.amazonaws.com/media/accounts/Boda5.jpg') top center !important; opacity: 0.99;">
+              style="background: url('https://ana-care.s3.amazonaws.com/media/accounts/Boda5.jpg') !important; opacity: 0.99;">
             <div class="container py-4 py-xl-5">
               <h1 style="font-family: 'Great Vibes', cursive !important; text-align: center;">¡Nos casamos!</h1>
               <div class="row gy-4 row-cols-2 row-cols-md-4">
@@ -58,7 +58,8 @@
                   <div
                     class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
                     <div class="px-3">
-                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0" id="minutes"></h2>
+                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0"
+                          id="minutes"></h2>
                       <p class="mb-0" style="font-family: 'Great Vibes', cursive !important;">Minutos</p>
                     </div>
                   </div>
@@ -67,20 +68,23 @@
                   <div
                     class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
                     <div class="px-3">
-                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0" id="seconds"></h2>
+                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0"
+                          id="seconds"></h2>
                       <p class="mb-0" style="font-family: 'Great Vibes', cursive !important;">Segundos</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-                    <div class="row mb-5 mb-lg-6 card" style="background-color: #f9f9f9;">
-          <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4 text-center">{{ party.name }} </h2>
-            <h3 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">{{ party.adult }} adultos</h3>
-            <h5 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">{{ party.comments }}</h5>
-          </div>
-        </div>
+            <div class="row mb-5 mb-lg-6 card" style="background-color: #f9f9f9;">
+              <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+                <h2 style="font-family: 'Great Vibes', cursive !important;"
+                    class="h1 mb-4 text-center">{{ party.name }} </h2>
+                <h3 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">{{ party.adult }}
+                  adultos</h3>
+                <h5 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">{{ party.comments }}</h5>
+              </div>
+            </div>
             </body>
           </div>
         </div>
@@ -93,7 +97,8 @@
       <div class="container">
         <div class="row mb-5 mb-lg-6">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 style="font-family: 'Great Vibes', cursive !important;" id="wherewhen" class="h1 mb-4">¿Dónde y Cuándo?</h2>
+            <h2 style="font-family: 'Great Vibes', cursive !important;" id="wherewhen" class="h1 mb-4">¿Dónde y
+              Cuándo?</h2>
           </div>
         </div>
         {% for place in object.invitation.place_set.all %}
@@ -105,7 +110,8 @@
                   class="card-img-top rounded-top"
                   alt="Joseph Portrait">
                 <div class="card-body">
-                  <h3 style="font-family: 'Great Vibes', cursive !important;" class="h4 card-title mb-2">Ceremonia religiosa</h3>
+                  <h3 style="font-family: 'Great Vibes', cursive !important;" class="h4 card-title mb-2">Ceremonia
+                    religiosa</h3>
                   <span class="card-subtitle text-gray fw-normal">{{ place.ceremony_name }} </span>
                   <p class="card-text my-3"><strong>Cuándo:</strong> {{ place.ceremony_when }} </p>
                   <p class="card-text my-3"><strong>Dirección:</strong> {{ place.ceremony_address }}</p>
@@ -181,7 +187,8 @@
 
         <div class="row mb-5 mb-lg-6">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 style="font-family: 'Great Vibes', cursive !important;" id="gallery_invitation" class="h1 mb-4">Galeria de fotos</h2>
+            <h2 style="font-family: 'Great Vibes', cursive !important;" id="gallery_invitation" class="h1 mb-4">Galeria
+              de fotos</h2>
           </div>
           <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -230,17 +237,56 @@
         </div>
 
 
-
         <div class="row mb-5 mb-lg-6">
-          <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">Mis padres</h2>
-          </div>
+          <section class="text-center bg-light">
+            <div class="container">
+              <h2 style="font-family: 'Great Vibes', cursive !important;" class="mb-5">Con la bendición de Dios
+                y Nuestros Padres</h2>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
+                                                                          src="testimonials-1.jpg"/>
+                    <h5>Margaret E.</h5>
+                    <p class="font-weight-light mb-0">&quot;- Padres de la Novia - &quot;</p>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
+                                                                          src="testimonials-2.jpg"/>
+                    <h5>Fred S.</h5>
+                    <p class="font-weight-light mb-0">&quot;- Padres del Novio -&quot;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="container">
+              <h2 style="font-family: 'Great Vibes', cursive !important;" class="mb-5">Nuestros Padrinos</h2>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
+                                                                          src="testimonials-1.jpg"/>
+                    <h5>Margaret E.</h5>
+                    <p class="font-weight-light mb-0">&quot;- Padres de la Novia - &quot;</p>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3"
+                                                                          src="testimonials-2.jpg"/>
+                    <h5>Fred S.</h5>
+                    <p class="font-weight-light mb-0">&quot;- Padres del Novio -&quot;</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <section class="section section-lg pb-0">
           <div class="container">
             <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-              <h2 style="font-family: 'Great Vibes', cursive !important;" id="gifts" class="h1 mb-4">Mesa de regalos <span class="h1 icon-tertiary"><span
-                class="fas fa-gift me-2"></span></span>
+              <h2 style="font-family: 'Great Vibes', cursive !important;" id="gifts" class="h1 mb-4">Mesa de regalos
+                <span class="h1 icon-tertiary"><span
+                  class="fas fa-gift me-2"></span></span>
               </h2>
 
               <p class="text my-6 card shadow">
@@ -258,7 +304,8 @@
                              alt="...">
                       </a>
                       <div class="card-body">
-                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">#Numero</h3>
+                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">
+                          #Numero</h3>
                       </div>
                     </div>
                   </div>
@@ -269,7 +316,8 @@
                              alt="...">
                       </a>
                       <div class="card-body">
-                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">#Numero</h3>
+                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">
+                          #Numero</h3>
                       </div>
                     </div>
                   </div>
@@ -280,7 +328,8 @@
                              alt="...">
                       </a>
                       <div class="card-body">
-                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">#Numero</h3>
+                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">
+                          #Numero</h3>
                       </div>
                     </div>
                   </div>
@@ -291,7 +340,8 @@
                       <div class="card-body px-5 py-5 text-center text-md-left">
                         <div class="row align-items-center">
                           <div class="col-md-6">
-                            <h2 style="font-family: 'Great Vibes', cursive !important;"  class="mb-3">Datos bancarios para transferencia</h2>
+                            <h2 style="font-family: 'Great Vibes', cursive !important;" class="mb-3">Datos bancarios
+                              para transferencia</h2>
                             <p class="mb-0">
                               Si no tienes idea que regalarme “Lluvia de sobres” es una tradición de regalar dinero en
                               efectivo a la
