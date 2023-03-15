@@ -17,9 +17,6 @@
     font-size: 50px;
   }
 
-  body {
-
-  }
 
 </style>
 {% block content %}
@@ -34,44 +31,56 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-12 col-md-12 col-lg-12 text-center text-md-left">
             <img src="{% static 'assets/img/HEADER.jpg' %}" alt="header-img">
-            <body style="background: url('https://ana-care.s3.amazonaws.com/media/accounts/BodaFondo.jpg') top center !important; opacity: 0.99;">
+            <body
+              style="background: url('https://ana-care.s3.amazonaws.com/media/accounts/Boda5.jpg') top center !important; opacity: 0.99;">
             <div class="container py-4 py-xl-5">
-              <h1 style="text-align: center;">¡Nos casamos!</h1>
+              <h1 style="font-family: 'Great Vibes', cursive !important; text-align: center;">¡Nos casamos!</h1>
               <div class="row gy-4 row-cols-2 row-cols-md-4">
                 <div class="col">
-                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
+                  <div
+                    class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
                     <div class="px-3">
-                      <h2 class="fw-bold mb-0" id="days"></h2>
-                      <p class="mb-0">Días</p>
+                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0" id="days"></h2>
+                      <p class="mb-0" style="font-family: 'Great Vibes', cursive !important;">Días</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
+                  <div
+                    class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
                     <div class="px-3">
-                      <h2 class="fw-bold mb-0" id="hours"></h2>
-                      <p class="mb-0">Horas</p>
+                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0" id="hours"></h2>
+                      <p class="mb-0" style="font-family: 'Great Vibes', cursive !important;">Horas</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
+                  <div
+                    class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
                     <div class="px-3">
-                      <h2 class="fw-bold mb-0" id="minutes"></h2>
-                      <p class="mb-0">Minutos</p>
+                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0" id="minutes"></h2>
+                      <p class="mb-0" style="font-family: 'Great Vibes', cursive !important;">Minutos</p>
                     </div>
                   </div>
                 </div>
                 <div class="col">
-                  <div class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
+                  <div
+                    class="text-center d-flex flex-column justify-content-center align-items-center py-3 card shadow">
                     <div class="px-3">
-                      <h2 class="fw-bold mb-0" id="seconds"></h2>
-                      <p class="mb-0">Segundos</p>
+                      <h2 style="font-family: 'Great Vibes', cursive !important;" class="fw-bold mb-0" id="seconds"></h2>
+                      <p class="mb-0" style="font-family: 'Great Vibes', cursive !important;">Segundos</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+                    <div class="row mb-5 mb-lg-6 card" style="background-color: #f9f9f9;">
+          <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
+            <h2 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4 text-center">{{ party.name }} </h2>
+            <h3 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">{{ party.adult }} adultos</h3>
+            <h5 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">{{ party.comments }}</h5>
+          </div>
+        </div>
             </body>
           </div>
         </div>
@@ -84,17 +93,19 @@
       <div class="container">
         <div class="row mb-5 mb-lg-6">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 id="wherewhen" class="h1 mb-4">¿Dónde y Cuándo?</h2>
+            <h2 style="font-family: 'Great Vibes', cursive !important;" id="wherewhen" class="h1 mb-4">¿Dónde y Cuándo?</h2>
           </div>
         </div>
         {% for place in object.invitation.place_set.all %}
           <div class="row mb-5 mb-lg-6">
             <div class="col-12 col-md-6 col-lg-6 mb-6 mb-lg-6">
               <div class="card shadow border-gray-300">
-                <img src="https://scontent.fvsa2-1.fna.fbcdn.net/v/t39.30808-6/218737916_234571801826426_284188366001454387_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeEmAe7hV3Ms-NVFmirJ9vYzyLn2aM3EvNzIufZozcS83GAPtT73Ty2PpYnbs6nA-z4&_nc_ohc=RH8dtQL08ngAX-NbDca&_nc_ht=scontent.fvsa2-1.fna&oh=00_AfCHuvjxinEiAhIrxk9zTsKMUfEc1d5O2-unU1zLbL2WIg&oe=640C716C" class="card-img-top rounded-top"
-                     alt="Joseph Portrait">
+                <img
+                  src="https://scontent.fvsa2-1.fna.fbcdn.net/v/t39.30808-6/218737916_234571801826426_284188366001454387_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeEmAe7hV3Ms-NVFmirJ9vYzyLn2aM3EvNzIufZozcS83GAPtT73Ty2PpYnbs6nA-z4&_nc_ohc=RH8dtQL08ngAX-NbDca&_nc_ht=scontent.fvsa2-1.fna&oh=00_AfCHuvjxinEiAhIrxk9zTsKMUfEc1d5O2-unU1zLbL2WIg&oe=640C716C"
+                  class="card-img-top rounded-top"
+                  alt="Joseph Portrait">
                 <div class="card-body">
-                  <h3 class="h4 card-title mb-2">Ceremonia religiosa</h3>
+                  <h3 style="font-family: 'Great Vibes', cursive !important;" class="h4 card-title mb-2">Ceremonia religiosa</h3>
                   <span class="card-subtitle text-gray fw-normal">{{ place.ceremony_name }} </span>
                   <p class="card-text my-3"><strong>Cuándo:</strong> {{ place.ceremony_when }} </p>
                   <p class="card-text my-3"><strong>Dirección:</strong> {{ place.ceremony_address }}</p>
@@ -127,10 +138,12 @@
             </div>
             <div class="col-12 col-md-6 col-lg-6 mb-6 mb-lg-6">
               <div class="card shadow border-gray-300">
-                <img src="https://scontent.fvsa2-1.fna.fbcdn.net/v/t39.30808-6/239576005_254932966456976_9142001124253217047_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHLGkhaC4fYWDy6gUOcnZtHz1Hcz1RIqaXPUdzPVEippa87MEKSMK4iKFOgQP_x4tg&_nc_ohc=3jLuHHHSXGAAX-6T8Gz&_nc_ht=scontent.fvsa2-1.fna&oh=00_AfBu0g9Grqzd7rtf7lLFrn3W_UM0q9NPR2xL4xrs6eBctA&oe=640CCA01" class="card-img-top rounded-top"
-                     alt="Bonnie portrait">
+                <img
+                  src="https://scontent.fvsa2-1.fna.fbcdn.net/v/t39.30808-6/239576005_254932966456976_9142001124253217047_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=8bfeb9&_nc_eui2=AeHLGkhaC4fYWDy6gUOcnZtHz1Hcz1RIqaXPUdzPVEippa87MEKSMK4iKFOgQP_x4tg&_nc_ohc=3jLuHHHSXGAAX-6T8Gz&_nc_ht=scontent.fvsa2-1.fna&oh=00_AfBu0g9Grqzd7rtf7lLFrn3W_UM0q9NPR2xL4xrs6eBctA&oe=640CCA01"
+                  class="card-img-top rounded-top"
+                  alt="Bonnie portrait">
                 <div class="card-body">
-                  <h3 class="h4 card-title mb-2">Recepción</h3>
+                  <h3 style="font-family: 'Great Vibes', cursive !important;" class="h4 card-title mb-2">Recepción</h3>
                   <span class="card-subtitle text-gray fw-normal">{{ place.reception_name }} </span>
                   <p class="card-text my-3"><strong>Cuándo:</strong> {{ place.reception_when }} </p>
                   <p class="card-text my-3"><strong>Dirección: </strong>{{ place.reception_address }}</p>
@@ -168,7 +181,7 @@
 
         <div class="row mb-5 mb-lg-6">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 id="gallery_invitation" class="h1 mb-4">Galeria de fotos</h2>
+            <h2 style="font-family: 'Great Vibes', cursive !important;" id="gallery_invitation" class="h1 mb-4">Galeria de fotos</h2>
           </div>
           <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -216,27 +229,21 @@
           </div>
         </div>
 
-        <div class="row mb-5 mb-lg-6 card" style="background-color: #fbc1c1;">
-          <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 class="h1 mb-4 text-center">{{ party.name }} </h2>
-            <h3 class="h1 mb-4">{{ party.adult }} adultos</h3>
-            <h5 class="h1 mb-4">{{ party.comments }}</h5>
-          </div>
-        </div>
+
 
         <div class="row mb-5 mb-lg-6">
           <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-            <h2 class="h1 mb-4">Mis padres</h2>
+            <h2 style="font-family: 'Great Vibes', cursive !important;" class="h1 mb-4">Mis padres</h2>
           </div>
         </div>
         <section class="section section-lg pb-0">
           <div class="container">
             <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-              <h2 id="gifts" class="h1 mb-4">Mesa de regalos <span class="h1 icon-tertiary"><span
+              <h2 style="font-family: 'Great Vibes', cursive !important;" id="gifts" class="h1 mb-4">Mesa de regalos <span class="h1 icon-tertiary"><span
                 class="fas fa-gift me-2"></span></span>
               </h2>
 
-              <p class="text my-6">
+              <p class="text my-6 card shadow">
                 Tu compañía es, definitivamente, mi mejor regalo. Pero si quieres obsequiarme algo adicional, ésta es
                 una sugerencia:
             </div>
@@ -251,7 +258,7 @@
                              alt="...">
                       </a>
                       <div class="card-body">
-                        <h3 class="h5 card-title mt-3">#Numero</h3>
+                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">#Numero</h3>
                       </div>
                     </div>
                   </div>
@@ -262,7 +269,7 @@
                              alt="...">
                       </a>
                       <div class="card-body">
-                        <h3 class="h5 card-title mt-3">#Numero</h3>
+                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">#Numero</h3>
                       </div>
                     </div>
                   </div>
@@ -273,7 +280,7 @@
                              alt="...">
                       </a>
                       <div class="card-body">
-                        <h3 class="h5 card-title mt-3">#Numero</h3>
+                        <h3 style="font-family: 'Great Vibes', cursive !important;" class="h5 card-title mt-3">#Numero</h3>
                       </div>
                     </div>
                   </div>
@@ -284,7 +291,7 @@
                       <div class="card-body px-5 py-5 text-center text-md-left">
                         <div class="row align-items-center">
                           <div class="col-md-6">
-                            <h2 class="mb-3">Datos bancarios para transferencia</h2>
+                            <h2 style="font-family: 'Great Vibes', cursive !important;"  class="mb-3">Datos bancarios para transferencia</h2>
                             <p class="mb-0">
                               Si no tienes idea que regalarme “Lluvia de sobres” es una tradición de regalar dinero en
                               efectivo a la
@@ -325,7 +332,7 @@
           <div class="testimonial-item">
             <h3><span class="h1 icon-tertiary"><span><img src="{% static 'bootstrap-icons/instagram-white.svg' %}"
                                                           alt="Bootstrap" width="64" height="64"></span></span></h3>
-            <h3>#MISXV</h3>
+            <h3 style="font-family: 'Great Vibes', cursive !important;">#MISXV</h3>
           </div>
 
 
@@ -335,7 +342,7 @@
         <section id="testimonials" class="testimonials2">
 
           <div class="testimonial-item">
-            <h3 id="confirmation">Confirmar asistencia</h3>
+            <h3 style="font-family: 'Great Vibes', cursive !important;" id="confirmation">Confirmar asistencia</h3>
             <h4>Por favor confirmar tu asistencia con tu nombre completo en la presente invitación a Chandelier
               eventos</h4>
             <a
