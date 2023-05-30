@@ -2,45 +2,317 @@
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>{% block title %}MeetingInvite{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Project to create invitation for all kinds of meetings">
-    <meta name="author" content="Miguel Alber Cordova Dominguez">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Project to create invitation for all kinds of meetings"
+    />
+    <meta name="author" content="Miguel Alber Cordova Dominguez" />
 
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+    <!-- plantilla -->
+
+    <link
+      rel="icon"
+      href="{% static 'base/images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+    <!-- Stylesheets-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic"
+    />
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/css/style.css' %}" />
+    <style>
+      .ie-panel {
+        display: none;
+        background: #212121;
+        padding: 10px 0;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+        clear: both;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      html.ie-10 .ie-panel,
+      html.lt-ie-10 .ie-panel {
+        display: block;
+      }
+    </style>
+
+    <!-- <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}"> -->
 
     {% block css %}
     <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+      integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Your stuff: Third-party CSS libraries go here -->
 
     <!-- This file stores project-specific CSS -->
     {% compress css %}
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    {% endcompress %}
-    {% endblock %}
+    <!-- <link href="{% static 'css/project.css' %}" rel="stylesheet"> -->
+    {% endcompress %} {% endblock %}
     <!-- Le javascript
     ================================================== -->
-    {# Placed at the top of the document so pages load faster with defer #}
-    {% block javascript %}
-      <!-- Bootstrap JS -->
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <!-- Your stuff: Third-party javascript libraries go here -->
+    {# Placed at the top of the document so pages load faster with defer #} 
+    {%block javascript %}
+    <!-- Bootstrap JS -->
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- Your stuff: Third-party javascript libraries go here -->
 
-      <!-- place project specific Javascript in this file -->
-      {% compress js %}
+    <!-- place project specific Javascript in this file -->
+    <!-- {% compress js %}
       <script defer src="{% static 'assets/js/project.js' %}"></script>
       {% endcompress %}
 
-    {% endblock javascript %}
-
+    {% endblock javascript %} -->
   </head>
 
   <body>
+    <div class="page">
+      <!-- Page header-->
+      <header class="section page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+          <nav
+            class="rd-navbar"
+            data-layout="rd-navbar-fixed"
+            data-sm-layout="rd-navbar-fixed"
+            data-sm-device-layout="rd-navbar-fixed"
+            data-md-layout="rd-navbar-static"
+            data-md-device-layout="rd-navbar-fixed"
+            data-lg-device-layout="rd-navbar-static"
+            data-lg-layout="rd-navbar-static"
+            data-stick-up-clone="false"
+            data-md-stick-up-offset="5px"
+            data-lg-stick-up-offset="5px"
+            data-md-stick-up="true"
+            data-lg-stick-up="true"
+          >
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <button
+                    class="rd-navbar-toggle"
+                    data-rd-navbar-toggle=".rd-navbar-nav-wrap"
+                  >
+                    <span></span>
+                  </button>
+                  <!-- RD Navbar Brand-->
+                  <div class="rd-navbar-brand">
+                    <a class="brand" href="index.html"
+                      ><img
+                        class="brand__logo-dark"
+                        src="{% static 'assets/img/MeetingInvitation-logo/vector/default-monochrome-black.svg' %}"
+                        alt=""
+                        width="237"
+                        height="50" />
+                      <div class="brand__name">
+                        <img
+                          class="brand__logo-light"
+                          src="{% static 'assets/img/MeetingInvitation-logo/vector/default-monochrome-black.svg' %}"
+                          alt=""
+                          width="237"
+                          height="50"
+                        /></div
+                    ></a>
+                  </div>
+                </div>
+                <!-- RD Navbar Nav-->
+                <div class="rd-navbar-nav-wrap">
+                  <div class="rd-navbar-element">
+                    <ul class="list-icons list-inline-sm">
+                      <li>
+                        <a
+                          class="icon icon-sm fa fa-instagram icon-style-camera"
+                          href="#"
+                          ><span></span><span></span><span></span><span></span
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          class="icon icon-sm fa fa-facebook icon-style-camera"
+                          href="#"
+                          ><span></span><span></span><span></span><span></span
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          class="icon icon-sm fa fa-pinterest icon-style-camera"
+                          href="#"
+                          ><span></span><span></span><span></span><span></span
+                        ></a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- RD Navbar Nav-->
 
-    <div class="mb-1">
+                  <ul class="rd-navbar-nav">
+                    <li class="active">
+                      <a href="index.html"
+                        >Home<span></span><span></span><span></span><span></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="{% url 'about' %}"
+                        >About<span></span><span></span><span></span
+                        ><span></span
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        >Typography<span></span><span></span><span></span
+                        ><span></span
+                      ></a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                      {# URL provided by django-allauth/account/urls.py #}
+                      <a
+                        class="nav-link"
+                        href="{% url 'users:detail' request.user.username  %}"
+                        >{% translate "My Profile" %}<span></span><span></span
+                        ><span></span><span></span
+                      ></a>
+                    </li>
+                    <li class="nav-item">
+                      {# URL provided by django-allauth/account/urls.py #}
+                      <a class="nav-link" href="{% url 'account_logout' %}"
+                        >{% translate "Sign Out" %}<span></span><span></span
+                        ><span></span><span></span
+                      ></a>
+                    </li>
+                    {% else %} {% if ACCOUNT_ALLOW_REGISTRATION %}
+                    <li class="nav-item">
+                      {# URL provided by django-allauth/account/urls.py #}
+                      <a
+                        id="sign-up-link"
+                        class="nav-link"
+                        href="{% url 'account_signup' %}"
+                        >{% translate "Sign Up" %}<span></span><span></span
+                        ><span></span><span></span
+                      ></a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                      {# URL provided by django-allauth/account/urls.py #}
+                      <a
+                        id="log-in-link"
+                        class="nav-link"
+                        href="{% url 'account_login' %}"
+                        >{% translate "Sign In" %}<span></span><span></span
+                        ><span></span><span></span
+                      ></a>
+                    </li>
+                    {% endif %}
+                    <li>
+                      <a href="contact-us.html"
+                        >Contact Us<span></span><span></span><span></span
+                        ><span></span
+                      ></a>
+                    </li>
+                  </ul>
+                  <a href="/"
+                    ><img
+                      class="logo-layout"
+                      src="{% static 'assets/img/MeetingInvitation-logo/vector/default-monochrome-black.svg' %}"
+                      alt=""
+                      width="237"
+                      height="50"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      {% include 'layouts/carrusel.html' %}
+
+      <!-- About Me-->
+      <section class="section section-md bg-white">
+        <div class="shell">
+          <div class="range range-50 range-sm-center range-md-left range-md-middle range-md-reverse">
+            <div class="cell-sm-6 wow fadeInRightSmall">
+              <div class="thumb-line"><img src="{% static 'base/images/about-1-531x640.jpg' %}" alt="" width="531" height="640"/>
+              </div>
+            </div>
+            <div class="cell-sm-6">
+              <div class="box-width-3">
+                <p class="heading-1 wow fadeInLeftSmall">About Me</p>
+                <article class="quote-big wow fadeInLeftSmall" data-wow-delay=".1s">
+                  <p class="q">I’ve been working as a professional wedding photographer all my adult life.</p>
+                </article>
+                <div class="divider wow fadeInLeftSmall" data-wow-delay=".2s"></div>
+                <p class="wow fadeInLeftSmall" data-wow-delay=".3s">My name is Susan Parker, and I have been a professional wedding photographer since 2005. On this website you can take a look at my latest photos or order a photo session for yourself or your family.</p><a class="button button-primary-outline button-ujarak button-size-1 wow fadeInLeftSmall" href="about-me.html" data-wow-delay=".4s">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- My Best Photos -->
+      <section class="section text-center">
+        <!-- Slick Carousel-->
+        <div class="slick-wrap">
+          <div class="slick-slider slick-style-1" data-arrows="true" data-autoplay="true" data-loop="true" data-dots="true" data-swipe="true" data-xs-swipe="true" data-sm-swipe="false" data-items="1" data-sm-items="3" data-md-items="3" data-lg-items="3" data-center-mode="true" data-lightgallery="group-slick">
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="images/group-image-4-1200x800-original.jpg" data-lightgallery="item"><img class="thumb-ann__image" src="images/home1-1-961x664.jpg" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">Image #1</p>
+                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/group-image-3-1200x800-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-2-961x664.jpg' %}" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">Image #2</p>
+                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/home1-4-1200x695-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-3-961x664.jpg' %}" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">Image #3</p>
+                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="slick-slide-inner">
+                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/group-image-2-1200x800-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-4-961x664.jpg' %}" alt="" width="961" height="664"/>
+                    <div class="thumb-ann__caption"> 
+                      <p class="thumb-ann__title heading-3">Image #4</p>
+                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
+                    </div></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+    <!-- <div class="mb-1">
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
           <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,35 +354,49 @@
         </div>
       </nav>
 
-    </div>
+    </div> -->
+
+    <!-- RD Navbar-->
 
     <div class="container">
-
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endfor %}
+      {% if messages %} {% for message in messages %}
+      <div
+        class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} 
       {% endif %}
 
-      {% block content %}
+      <!-- {% block content %}
         <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+      {% endblock content %} -->
+    </div>
+    <!-- /container -->
 
-    </div> <!-- /container -->
-
-    {% block modal %}{% endblock modal %}
-
-    {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
+    {% block modal %}
+    {% endblock modal %} 
+    {% block inline_javascript %} 
+    {% comment %} Script tags with only code, no src (defer by default). To run
     with a "defer" so that you run inline code:
     <script>
-      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+      window.addEventListener("DOMContentLoaded", () => {
+        /* Run whatever you want */
+      });
     </script>
-    {% endcomment %}
+    {% endcomment %} 
     {% endblock inline_javascript %}
+
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="{% static 'base/js/core.min.js' %}"></script>
+    <script src="{% static 'base/js/script.js' %}"></script>
   </body>
 </html>
