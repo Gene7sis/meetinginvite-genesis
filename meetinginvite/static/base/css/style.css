@@ -261,7 +261,7 @@ p [data-toggle='tooltip'] {
 * Typography
 * ==================================================
 */
-h1, h2, h3, h4, h5, h6, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
+h1, h2, h3, h4, h5, h6, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
 	margin-top: 0;
 	margin-bottom: 0;
 	font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
@@ -282,11 +282,15 @@ h1 *, h2 *, h3 *, h4 *, h5 *, h6 *, .heading-1 *, .heading-2 *, .heading-3 *, .h
 	display: inline;
 }
 
-h1,
-.heading-1 {
+h1 {
 	font-size: 34px;
 	line-height: 1.15;
 }
+
+.heading-1{
+	font-size:40px !important;
+}
+
 
 @media (min-width: 768px) {
 	h1,
@@ -298,7 +302,7 @@ h1,
 @media (min-width: 992px) {
 	h1,
 	.heading-1 {
-		font-size: 60px;
+		font-size: 50px;
 		line-height: 1.33333;
 	}
 }
@@ -5521,7 +5525,6 @@ html:not(.mobile):not(.tablet) .quote-boxed:hover .quote-boxed__shape {
 .thumb-line img {
 	position: relative;
 	z-index: 2;
-	width: 100%;
 }
 
 .image-wrap-1 {
@@ -8918,6 +8921,7 @@ h4 + .heading-5,
 .layout-columns__aside-item h1, .layout-columns__aside-item h2, .layout-columns__aside-item h3, .layout-columns__aside-item h4, .layout-columns__aside-item h5, .layout-columns__aside-item h6, .layout-columns__aside-item .heading-1, .layout-columns__aside-item .heading-2, .layout-columns__aside-item .heading-3, .layout-columns__aside-item .heading-4, .layout-columns__aside-item .heading-5, .layout-columns__aside-item .heading-6 {
 	text-transform: uppercase;
 }
+
 
 @media (min-width: 480px) {
 	.layout-columns__aside-item {
@@ -16054,7 +16058,7 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 
 .slick-slider {
 	position: relative;
-	display: block;
+	align-items: center;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-touch-callout: none;
@@ -16297,8 +16301,9 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 .slick-wrap {
 	position: relative;
 	overflow: hidden;
-	max-width: 2050px;
+	max-width: 100%;
 	margin-left: auto;
+	align-items: center;
 	margin-right: auto;
 }
 
@@ -16408,7 +16413,7 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 		-ms-flex-negative: 0;
 		flex-shrink: 0;
 		pointer-events: none;
-		width: calc(100% + 220px);
+		width: calc(100% + 80px);
 	}
 	.slick-style-1 .slick-center {
 		overflow: visible;
