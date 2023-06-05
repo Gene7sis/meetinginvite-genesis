@@ -38,6 +38,7 @@ class InvitationCodeDetailView(DetailView):
         return context
 
 
+
 # def invitation(request, invite_id):
 #     party = guess_party_by_invite_id_or_404(invite_id)
 #     if party.invitation_opened is None:

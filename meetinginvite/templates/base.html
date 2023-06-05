@@ -1,4 +1,5 @@
 {% load static i18n compress%}<!DOCTYPE html>
+
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
@@ -80,142 +81,13 @@
   <body>
     <div class="page">
       <!-- Page header-->
-      <header class="section page-header">
-        <!-- RD Navbar-->
-        <div class="rd-navbar-wrap">
-          <nav
-            class="rd-navbar"
-            data-layout="rd-navbar-fixed"
-            data-sm-layout="rd-navbar-fixed"
-            data-sm-device-layout="rd-navbar-fixed"
-            data-md-layout="rd-navbar-static"
-            data-md-device-layout="rd-navbar-fixed"
-            data-lg-device-layout="rd-navbar-static"
-            data-lg-layout="rd-navbar-static"
-            data-stick-up-clone="false"
-            data-md-stick-up-offset="5px"
-            data-lg-stick-up-offset="5px"
-            data-md-stick-up="true"
-            data-lg-stick-up="true"
-          >
-            <div class="rd-navbar-main-outer">
-              <div class="rd-navbar-main">
-            
-
-                <!-- RD Navbar Panel-->
-                <div class="rd-navbar-panel">
-                  <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
-                  <!-- RD Navbar Brand-->
-                  <div class="rd-navbar-brand"><a class="brand" href="index.html">
-                      <div class="brand__name"><img class="brand__logo-light" src="{% static 'assets/img/MeetingInvitation-logo/vector/default-monochrome-black.svg' %}" alt="" width="237" height="35"/>
-                      </div></a></div>
-                </div>
-                <!-- RD Navbar Nav-->
-                <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-element">
-                    <ul class="list-icons list-inline-sm">
-                      <li>
-                        <a
-                          class="icon icon-sm fa fa-instagram icon-style-camera"
-                          href="#"
-                          ><span></span><span></span><span></span><span></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a
-                          class="icon icon-sm fa fa-facebook icon-style-camera"
-                          href="#"
-                          ><span></span><span></span><span></span><span></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a
-                          class="icon icon-sm fa fa-pinterest icon-style-camera"
-                          href="#"
-                          ><span></span><span></span><span></span><span></span
-                        ></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- RD Navbar Nav-->
-
-                  <ul class="rd-navbar-nav">
-                    <li class="active">
-                      <a href="index.html"
-                        >Inicio<span></span><span></span><span></span><span></span
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="{% url 'about' %}"
-                        >Sobre Nosotros<span></span><span></span><span></span
-                        ><span></span
-                      ></a>
-                    </li>
-                    {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                      {# URL provided by django-allauth/account/urls.py #}
-                      <a
-                        class="nav-link"
-                        href="{% url 'users:detail' request.user.username  %}"
-                        >{% translate "My Profile" %}<span></span><span></span
-                        ><span></span><span></span
-                      ></a>
-                    </li>
-                    <li class="nav-item">
-                      {# URL provided by django-allauth/account/urls.py #}
-                      <a class="nav-link" href="{% url 'account_logout' %}"
-                        >{% translate "Sign Out" %}<span></span><span></span
-                        ><span></span><span></span
-                      ></a>
-                    </li>
-                    {% else %} {% if ACCOUNT_ALLOW_REGISTRATION %}
-                    <li class="nav-item">
-                      {# URL provided by django-allauth/account/urls.py #}
-                      <a
-                        id="sign-up-link"
-                        class="nav-link"
-                        href="{% url 'account_signup' %}"
-                        >{% translate "Sign Up" %}<span></span><span></span
-                        ><span></span><span></span
-                      ></a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item">
-                      {# URL provided by django-allauth/account/urls.py #}
-                      <a
-                        id="log-in-link"
-                        class="nav-link"
-                        href="{% url 'account_login' %}"
-                        >{% translate "Sign In" %}<span></span><span></span
-                        ><span></span><span></span
-                      ></a>
-                    </li>
-                    {% endif %}
-                    <li>
-                      <a href="contact-us.html"
-                        >Contact Us<span></span><span></span><span></span
-                        ><span></span
-                      ></a>
-                    </li>
-                  </ul>
-                  <a href="/"
-                    ><img
-                      class="logo-layout"
-                      src="{% static 'assets/img/MeetingInvitation-logo/vector/default-monochrome-black.svg' %}"
-                      alt=""
-                      width="237"
-                      height="50"
-                  /></a>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+      {% include 'layouts/layoutbase.html' %}
+      
       {% include 'layouts/carrusel.html' %}
 
       <!-- About Me-->
-      <section class="section section-md bg-white">
+    <div class="invitation-info">
+      <section class="section section-md">
         <div class="shell">
           <p class="heading-1">¿Qué son las invitaciones digitales?</p>
           <div class="range range-50 range-sm-center range-md-left range-md-middle range-md-reverse">
@@ -236,6 +108,7 @@
           </div>
         </div>
       </section>
+    </div>
 
       <!-- My Best Photos -->
       <section class="section text-center">
@@ -312,6 +185,25 @@
         </div>
       </div>
     </section>
+
+    {% include 'layouts/partesinvitacion.html' %}
+
+     <!-- QUIENES SOMOS -->
+     <section class="section section-sm text-center"> 
+      <div class="shell">
+        <div class="range range-50 range-sm-center">
+          <div class="cell-md-10 cell-lg-9">
+            <h1>¿Quienes somos?</h1>
+            <p>In my portfolio, there are hundreds of successful photo shoots and dozens of satisfied customers. All of the couples I’ve been working with were more than satisfied with my works. Check out the gallery to learn more about my skills and style.</p>
+          </div>
+        </div>
+      </div>
+      </section>
+
+
+      {% include 'layouts/footer.html' %}
+   
+
 
 
 

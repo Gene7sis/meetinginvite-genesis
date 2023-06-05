@@ -1,13 +1,186 @@
-{% extends 'layouts/base.html' %}
-{% load static %}
 
-{% block content %}
-    <main>
+{% load static i18n compress%}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{% block title %}MeetingInvite{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Project to create invitation for all kinds of meetings"
+    />
+    <meta name="author" content="Miguel Alber Cordova Dominguez" />
 
-        {% include 'includes/pre-loader.html' %}
+    <!-- plantilla -->
+
+    <link
+      rel="icon"
+      href="{% static 'base/images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+    <!-- Stylesheets-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic%7CJosefin+Sans:400,700,300italic"
+    />
+    <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/css/style.css' %}" />
+    <style>
+      .ie-panel {
+        display: none;
+        background: #212121;
+        padding: 10px 0;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+        clear: both;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      html.ie-10 .ie-panel,
+      html.lt-ie-10 .ie-panel {
+        display: block;
+      }
+    </style>
+
+    <script>
+      function openWhatsAppChat() {
+        var mensaje = document.getElementById("mensaje").value;
+            
+            if (mensaje.trim() === '') {
+                alert("Por favor, escribe un mensaje.");
+                return;
+            }
+        var mensajeCodificado = encodeURIComponent(mensaje);
+        var numeroTelefono = "9933675247"; // Reemplaza con tu propio número de teléfono de WhatsApp
+        var enlaceWhatsApp = "https://web.whatsapp.com/send?phone=" + numeroTelefono + "&text=" + mensajeCodificado;
+        window.open(enlaceWhatsApp);
+      }
+  </script>
+    <!-- <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}"> -->
+
+    {% block css %}
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+      integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+    <!-- Your stuff: Third-party CSS libraries go here -->
+
+    <!-- This file stores project-specific CSS -->
+    {% compress css %}
+    <!-- <link href="{% static 'css/project.css' %}" rel="stylesheet"> -->
+    {% endcompress %} {% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #} 
+    {%block javascript %}
+    <!-- Bootstrap JS -->
+    <!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- Your stuff: Third-party javascript libraries go here -->
+
+    <!-- place project specific Javascript in this file -->
+    <!-- {% compress js %}
+      <script defer src="{% static 'assets/js/project.js' %}"></script>
+      {% endcompress %}
+
+    {% endblock javascript %} -->
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- Page header-->
+      {% include 'layouts/layoutbase.html' %}
+
+      <!-- Breadcrumbs-->
+      
+      <section class="breadcrumbs-custom bg-image">
+        <div class="shell">
+          <h1 class="breadcrumbs-custom__title">Contact Us</h1>
+          <ul class="breadcrumbs-custom__path">
+            <li><a href="https://goo.gl/maps/YxZYpfsP6xX5BdVm9" target="_blank">ver mapa</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section-md bg-white text-center">
+        <div class="shell">
+          <div class="range range-md-center">
+            <div class="cell-md-11 cell-lg-10">
+              <h2 class="text-bold">Get in Touch</h2>
+              <p><span class="box-width-2">We are available 24/7 by fax, e-mail or by phone. You can also use our quick contact form to ask a question about our services and projects.</span></p>
+              <div class="layout-columns"> 
+                <div class="layout-columns__main">
+                  <div class="layout-columns__main-inner">
+                    <!-- RD Mailform-->
+                    <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact">
+                      <div class="form-wrap">
+                        <label class="form-label" for="mensaje">Escriba su mensaje</label>
+                        <textarea class="form-input" id="mensaje" name="message" data-constraints="@Required"></textarea>
+                      </div> <br>
+                      <div class="form-wrap form-button ">
+                        <button class="button button-block button-primary-outline" type="button" onclick="openWhatsAppChat()"> <img src = "{% static 'bootstrap-icons/whatsapp.svg' %}" height="50px"/> Enviar mensaje</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="layout-columns__aside">
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">Socials</p>
+                    <div class="divider-modern"></div>
+                    <ul class="list-inline-xs">
+                      <li><a class="icon icon-md icon-gray-7 fa fa-facebook" href="#"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-twitter" href="#"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-google" href="#"></a></li>
+                      <li><a class="icon icon-md icon-gray-7 fa fa-youtube" href="#"></a></li>
+                    </ul>
+                  </div>
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">opening hours</p>
+                    <div class="divider-modern"></div>
+                    <div class="unit unit-horizontal unit-spacing-xxs">
+                      <div class="unit__left"><span class="icon icon-md icon-primary mdi mdi-clock"></span></div>
+                      <div class="unit__body"><span>We work every day 9:00–23:00</span></div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="layout-columns__aside">
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">Address</p>
+                    <div class="divider-modern"></div>
+                    <div class="unit unit-horizontal unit-spacing-xxs">
+                      <div class="unit__left"><span class="icon icon-md icon-primary material-icons-location_on"></span></div>
+                      <div class="unit__body"><a href="#">267 Park Avenue New York, NY 90210</a></div>
+                    </div>
+                  </div>
+                  <div class="layout-columns__aside-item">
+                    <p class="heading-5">Phone</p>
+                    <div class="divider-modern"></div>
+                    <div class="unit unit-horizontal unit-spacing-xxs">
+                      <div class="unit__left"><span class="icon icon-md icon-primary material-icons-local_phone"></span></div>
+                      <div class="unit__body"><a href="tel:#">1-800-1234-567</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    {% include 'layouts/footer.html' %}
+
+        <!-- {% include 'includes/pre-loader.html' %} -->
 
         <!-- Hero -->
-        <section class="section section-header pb-11 bg-primary text-white">
+        <!-- <section class="section section-header pb-11 bg-primary text-white">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-xl-8 text-center">
@@ -16,9 +189,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Section -->
-        <div class="section py-0">
+        <!-- <div class="section py-0">
             <div class="container mt-n10">
                 <div class="row">
                     <div class="col-12">
@@ -26,52 +199,52 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Section -->
-        <section class="section section-lg pt-6">
+        <!-- <section class="section section-lg pt-6">
             <div class="container">
                 <div class="row justify-content-center mb-5 mb-lg-6">
-                    <div class="col-12 col-lg-8">
+                    <div class="col-12 col-lg-8"> -->
                         <!-- Contact Card -->
-                        <div class="card border-0 p-2 p-md-3 p-lg-5">
+                        <!-- <div class="card border-0 p-2 p-md-3 p-lg-5">
                             <div class="card-header bg-white border-0 text-center">
                                 <h2>Want to work with us?</h2>
                                 <p>Cool! Let’s talk about your project</p>
                             </div>
                             <div class="card-body px-0 pt-0">
-                                <form action="#">
+                                <form action="#"> -->
                                     <!-- Form -->
-                                    <div class="mb-4">
+                                    <!-- <div class="mb-4">
                                         <label for="name">Your Name</label>
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon3"><span class="fas fa-user-circle"></span></span>
                                             <input type="text" class="form-control" placeholder="e.g. Bonnie Green" id="name" required>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- End of Form -->
                                     <!-- Form -->
-                                    <div class="mb-4">
+                                    <!-- <div class="mb-4">
                                         <label for="email">Your Email</label>
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon4"><span class="fas fa-envelope"></span></span>
                                             <input type="email" class="form-control" placeholder="example@company.com" id="email" required>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- End of Form -->
-                                    <div class="mb-4">
+                                    <!-- <div class="mb-4">
                                         <label for="message">Your Message</label>
                                         <textarea placeholder="Your message" class="form-control" id="message" rows="4" required></textarea>
-                                    </div>
+                                    </div> -->
                                     <!-- End of Form -->
-                                    <div class="d-grid">
+                                    <!-- <div class="d-grid">
                                         <button type="submit" class="btn rounded btn-secondary">Send message</button>
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- End of Contact Card -->
-                    </div>
-                </div>
+                    <!-- </div> -->
+                <!-- </div>
                 <div class="row">
                     <div class="col-12 text-center mb-5">
                         <h2>Our support team</h2>
@@ -177,8 +350,53 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- End of section -->
-    </main>
+  
+   
 
-    {% endblock content %}
+<!-- RD Navbar-->
+
+<div class="container">
+    {% if messages %} {% for message in messages %}
+    <div
+      class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %} 
+    {% endif %}
+
+    <!-- {% block content %}
+      <p>Use this document as a way to quick start any new project.</p>
+    {% endblock content %} -->
+  </div>
+  <!-- /container -->
+
+  {% block modal %}
+  {% endblock modal %} 
+  {% block inline_javascript %} 
+  {% comment %} Script tags with only code, no src (defer by default). To run
+  with a "defer" so that you run inline code:
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      /* Run whatever you want */
+    });
+  </script>
+  {% endcomment %} 
+  {% endblock inline_javascript %}
+
+  <!-- Global Mailform Output-->
+  <div class="snackbars" id="form-output-global"></div>
+  <!-- Javascript-->
+  <script src="{% static 'base/js/core.min.js' %}"></script>
+  <script src="{% static 'base/js/script.js' %}"></script>
+
+</body>
+</html>
