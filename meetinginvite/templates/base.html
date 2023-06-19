@@ -76,15 +76,149 @@
       {% endcompress %}
 
     {% endblock javascript %} -->
+
+    <style>
+      body {
+        background-color: White;
+      }
+    </style>
+
   </head>
 
-  <body>
+  <body >
     <div class="page">
       <!-- Page header-->
       {% include 'layouts/layoutbase.html' %}
       
       {% include 'layouts/carrusel.html' %}
+      {% if request.user.is_authenticated %}
+      <div>
+        <form id="color-form">
+          <span>Selecciona un color de la lista: </span>
+          <select id="color-type">
+            <option value="name">Nombre del color en inglés</option>
+            <option value="hex">Valor hexadecimal</option>
+            <option value="rgb">Valor RGB</option>
+          </select>
+          <div id="color-input-container">
+            <input type="text" id="color-name" placeholder="Escribe el nombre del color en inglés" />
+            <input type="text" id="color-hex" placeholder="Escribe el valor hexadecimal" style="display: none;" />
+            <input type="text" id="color-rgb" placeholder="Escribe el valor RGB" style="display: none;" />
+          </div>
+          <input type="submit" value="Cambiar el fondo!" />
+        </form>
 
+        <select id="font-selector">
+          <option value="Arial">Arial</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Times New Roman">Times New Roman</option>
+        </select>
+      
+        <script>
+          // Obtener el color seleccionado de la URL
+          var urlParams = new URLSearchParams(window.location.search);
+          var colorType = urlParams.get("type");
+          var colorValue = urlParams.get("value");
+        
+          if (colorType && colorValue) {
+            setColor(colorType, colorValue);
+          }
+        
+          // Evento de cambio del tipo de color
+          document.getElementById("color-type").addEventListener("change", function(event) {
+            var selectedType = event.target.value;
+            showColorInput(selectedType);
+          });
+        
+          // Evento de envío del formulario
+          document.getElementById("color-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var selectedType = document.getElementById("color-type").value;
+            var selectedValue = "";
+        
+            if (selectedType === "name") {
+              selectedValue = document.getElementById("color-name").value;
+            } else if (selectedType === "hex") {
+              selectedValue = document.getElementById("color-hex").value;
+            } else if (selectedType === "rgb") {
+              selectedValue = document.getElementById("color-rgb").value;
+            }
+        
+            setColor(selectedType, selectedValue);
+            updateURL(selectedType, selectedValue);
+          });
+        
+          // Mostrar el campo de entrada de color correspondiente al tipo seleccionado
+          function showColorInput(type) {
+            var nameInput = document.getElementById("color-name");
+            var hexInput = document.getElementById("color-hex");
+            var rgbInput = document.getElementById("color-rgb");
+        
+            if (type === "name") {
+              nameInput.style.display = "block";
+              hexInput.style.display = "none";
+              rgbInput.style.display = "none";
+            } else if (type === "hex") {
+              nameInput.style.display = "none";
+              hexInput.style.display = "block";
+              rgbInput.style.display = "none";
+            } else if (type === "rgb") {
+              nameInput.style.display = "none";
+              hexInput.style.display = "none";
+              rgbInput.style.display = "block";
+            }
+          }
+        
+          // Establecer el color de fondo del body
+          function setColor(type, value) {
+            var body = document.body;
+        
+            if (type === "name") {
+              body.style.backgroundColor = value;
+            } else if (type === "hex") {
+              body.style.backgroundColor = "#" + value;
+            } else if (type === "rgb") {
+              body.style.backgroundColor = "rgb(" + value + ")";
+            }
+          }
+        
+          // Actualizar la URL con los parámetros seleccionados
+          function updateURL(type, value) {
+            var url = window.location.href.split("?")[0];
+            var newURL = url + "?type=" + type + "&value=" + value;
+            window.history.replaceState({}, "", newURL);
+          }
+
+            // Obtener la fuente seleccionada del almacenamiento local
+  var selectedFont = localStorage.getItem("selectedFont");
+
+  if (selectedFont) {
+    setFont(selectedFont);
+    updateFontSelector(selectedFont);
+  }
+
+  // Evento de cambio de la fuente
+  document.getElementById("font-selector").addEventListener("change", function(event) {
+    var font = event.target.value;
+    setFont(font);
+    localStorage.setItem("selectedFont", font);
+  });
+
+  // Establecer la fuente del body
+  function setFont(font) {
+    var body = document.body;
+    body.style.fontFamily = font;
+  }
+
+  // Actualizar la selección del font selector
+  function updateFontSelector(font) {
+    var fontSelector = document.getElementById("font-selector");
+    fontSelector.value = font;
+  }
+        </script>
+      </div> 
+      {% else %}
+      {% endif %}
       <!-- About Me-->
     <div class="invitation-info">
       <section class="section section-md">
@@ -164,7 +298,7 @@
     </div>
 
     <!-- Eventos -->
-    <section class="section section-md bg-white">
+    <section class="section section-md">
       <div class="shell">
         <div class="range range-50 range-sm-center range-md-left">
           <div class="cell-sm-6 cell-md-5">
@@ -207,49 +341,7 @@
 
 
 
-    <!-- <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container-fluid">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'home' %}">MeetingInvite</a>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
-              {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
-                </li>
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-                </li>
-              {% else %}
-                {% if ACCOUNT_ALLOW_REGISTRATION %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-              </li>
-              {% endif %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-    </div> -->
 
     <!-- RD Navbar-->
 

@@ -9,4 +9,5 @@ urlpatterns = [
     path("<slug:slug>", InvitationDetailView.as_view(), name="invitation_detail"),
     path("<slug:slug>/<slug:invitation_code>/", InvitationCodeDetailView.as_view(), name="invitation_party_detail"),
     path('home/', AboutView.as_view()),
+
 ]

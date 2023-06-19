@@ -3,6 +3,10 @@ from django.views.generic import TemplateView
 from meetinginvite.invitations.models import InvitationBase, Party
 from django.views.generic import ListView, DetailView
 from datetime import datetime
+
+def cambiar_fondo(request):
+    return render(request, 'base.html')
+
 class AboutView(TemplateView):
     template_name = "invitation_base.html"
 

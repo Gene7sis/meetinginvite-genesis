@@ -13936,156 +13936,7 @@ html.lt-ie-10 .range > .cell-lg-12 {
 
 
 
-/**
-*  RD Navbar Sidebar
-*/
 
-.rd-navbar-sidebar .rd-navbar-submenu.focus > .rd-navbar-dropdown,
-.rd-navbar-sidebar .rd-navbar-submenu.focus > .rd-navbar-megamenu, .rd-navbar-sidebar .rd-navbar-submenu.opened > .rd-navbar-dropdown,
-.rd-navbar-sidebar .rd-navbar-submenu.opened > .rd-navbar-megamenu {
-	display: block;
-	opacity: 1;
-	visibility: visible;
-}
-
-.rd-navbar-sidebar .rd-navbar-submenu > .rd-navbar-submenu > .rd-navbar-dropdown,
-.rd-navbar-sidebar .rd-navbar-submenu > .rd-navbar-submenu > .rd-navbar-megamenu {
-	transform: translateY(30px);
-}
-
-.rd-navbar-sidebar .rd-navbar-submenu > .rd-navbar-submenu.opened > .rd-navbar-dropdown,
-.rd-navbar-sidebar .rd-navbar-submenu > .rd-navbar-submenu.opened > .rd-navbar-megamenu {
-	transform: translateY(0);
-}
-
-.rd-navbar-sidebar .rd-navbar-submenu > .rd-navbar-submenu .rd-navbar-submenu > .rd-navbar-dropdown {
-	transform: translateX(-20px);
-}
-
-.rd-navbar-sidebar .rd-navbar-submenu > .rd-navbar-submenu .rd-navbar-submenu.opened > .rd-navbar-dropdown {
-	transform: translateX(0);
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown,
-.rd-navbar-sidebar .rd-megamenu-list {
-	border: 1px solid #f2f3f8;
-	border-left: 0;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown > li > a,
-.rd-navbar-sidebar .rd-megamenu-list > li > a {
-	display: block;
-}
-
-.rd-navbar-sidebar .rd-megamenu-header {
-	display: none;
-}
-
-.rd-navbar-sidebar .rd-megamenu-list {
-	margin-top: 0;
-}
-
-.rd-navbar-sidebar .rd-megamenu-list > li + li {
-	margin-top: 10px;
-}
-
-@media (min-width: 1800px) {
-	.rd-navbar-sidebar .rd-megamenu-list > li + li {
-		margin-top: 18px;
-	}
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown > a {
-	text-decoration: underline;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown.opened > a {
-	color: #00bd9d;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown.opened > .rd-navbar-submenu-toggle {
-	color: #00bd9d;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown.opened > .rd-navbar-submenu-toggle::after {
-	top: 1px;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown > a {
-	padding-right: 0;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown > a::before {
-	display: none;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown > a:hover {
-	padding-left: 0;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown .rd-navbar--has-dropdown.focus > a {
-	padding-left: 0;
-}
-
-.rd-navbar-sidebar .rd-navbar-dropdown > li + li {
-	margin-top: 10px;
-}
-
-.rd-navbar-sidebar .rd-navbar-nav > li > .rd-navbar-dropdown .rd-navbar-dropdown {
-	margin-top: -1px;
-	margin-left: 5px;
-	padding-left: 15px;
-}
-
-.rd-navbar-sidebar .rd-navbar-nav > li > .rd-navbar-dropdown .rd-navbar-dropdown > li > a {
-	font-size: 12px;
-}
-
-@media (min-width: 1200px) {
-	.rd-navbar-sidebar .rd-navbar-megamenu > li:nth-child(n + 3) {
-		margin-top: 40px;
-	}
-	.rd-navbar-sidebar .rd-navbar-dropdown > li + li,
-	.rd-navbar-sidebar .rd-megamenu-list > li + li {
-		margin-top: 10px;
-	}
-	.rd-navbar-sidebar .rd-navbar__main {
-		padding-top: 27px;
-		padding-bottom: 27px;
-	}
-}
-
-@media (min-width: 1800px) {
-	.rd-navbar-sidebar .rd-navbar-nav > li + li {
-		margin-top: 9px;
-	}
-	.rd-navbar-sidebar .rd-navbar-dropdown > li + li,
-	.rd-navbar-sidebar .rd-megamenu-list > li + li {
-		margin-top: 18px;
-	}
-	.rd-navbar-sidebar .rd-navbar-nav-wrap__inner {
-		width: auto;
-		left: calc(50% + 600px - 80px);
-	}
-}
-
-.rd-navbar-sidebar.rd-navbar--is-clone {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 1000;
-	transform: translateY(-101%);
-}
-
-.rd-navbar-sidebar.rd-navbar--is-clone.rd-navbar--is-stuck {
-	transform: translateY(0);
-}
-
-.rd-navbar-sidebar.rd-navbar--is-stuck .rd-navbar-main {
-	padding-top: 11px;
-	padding-bottom: 11px;
-}
 
 /*
 * @subsection   Page boxed layout style redeclaration
@@ -14897,7 +14748,6 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 .slick-wrap {
 	position: relative;
 	overflow: hidden;
-	max-width: 100%;
 	margin-left: auto;
 	align-items: center;
 	margin-right: auto;
@@ -14906,6 +14756,10 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 
 .slick-style-1 {
 	margin-bottom: 0;
+}
+
+.thumb-ann{
+	width: 500px;
 }
 
 .slick-style-1 .slick-arrow {
@@ -14920,20 +14774,18 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 
 @media (max-width: 767px) {
 	.slick-style-1 {
-		max-width: 410px;
+		max-width: 610px;
 		margin-left: auto;
 		margin-right: auto;
 	}
 	.slick-style-1 .thumb-ann {
-		max-width: 410px;
+		max-width: 610px;
 	}
 }
 
 @media (min-width: 768px) {
 	.slick-style-1 {
-		margin-left: -17px;
-		margin-right: -17px;
-		width: calc(100% + 34px);
+		width: calc(100%);
 		pointer-events: none;
 	}
 	.slick-style-1 .slick-wrapper {
@@ -14971,6 +14823,7 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 		z-index: 2;
 		pointer-events: auto;
 	}
+
 	.slick-style-1 .slick-slide-caption {
 		position: relative;
 		transform: translate3d(-70px, 0, 0);
@@ -15010,7 +14863,7 @@ html[class*="ie"] .dtp-hand, html[class*="ie"] .dtp-hour-hand {
 		-ms-flex-negative: 0;
 		flex-shrink: 0;
 		pointer-events: none;
-		width: calc(100% + 80px);
+		width: calc(100%);
 	}
 	.slick-style-1 .slick-center {
 		overflow: visible;
