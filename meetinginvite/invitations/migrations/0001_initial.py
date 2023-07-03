@@ -20,7 +20,6 @@ class Migration(migrations.Migration):
                 ('name_event', models.CharField(blank=True, max_length=255, verbose_name='Nombre del evento')),
                 ('type_event', models.IntegerField(choices=[(None, '(Pendiente)'), (0, 'MIS XV AÑOS'), (1, 'NUESTRA BODA'), (2, 'MI BAUTIZO')])),
                  # codigo añadido
-                ('messages', models.TextField(blank=True, verbose_name="Mensajes")),
                  # codigo añadido
                 ('date_until_event', models.DateTimeField()),
                 ('itinerary', models.ImageField(upload_to='itinerary')),

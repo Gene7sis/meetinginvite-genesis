@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from meetinginvite.invitations.models import InvitationBase, Party
 from django.views.generic import ListView, DetailView
 from datetime import datetime
+import re
 
 def cambiar_fondo(request):
     return render(request, 'base.html')
@@ -21,6 +22,8 @@ class InvitationDetailView(DetailView):
 
 
         return context
+    
+
 
 class InvitationCodeDetailView(DetailView):
     model = Party
@@ -40,6 +43,9 @@ class InvitationCodeDetailView(DetailView):
 
 
         return context
+    
+
+
 
 
 

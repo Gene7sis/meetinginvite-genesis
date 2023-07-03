@@ -74,6 +74,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "drf_spectacular",
     "bootstrap5",
+    "embed_video",
 ]
 
 LOCAL_APPS = [
@@ -82,7 +83,7 @@ LOCAL_APPS = [
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS 
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------

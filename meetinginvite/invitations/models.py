@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.utils.text import slugify
 import uuid
+from embed_video.fields import EmbedVideoField
 import csv
 
 
@@ -24,7 +25,12 @@ class InvitationBase(Model):
     music = models.FileField(upload_to='music', null=True, blank=True)
     video = models.FileField(upload_to='video', null=True, blank=True)
     excel_invitation = models.FileField(upload_to='excel_invitation', null=True, blank=True)
-    video_url = models.URLField(null=True, blank=True)
+    video_url = EmbedVideoField(null=True, blank=True)
+    
+    
+    inicio_img = models.ImageField(upload_to='invitations_carrousel', blank=True)
+    carrousel_img = models.ImageField(upload_to='invitations_carrousel', blank=True)
+    confirmacion_img = models.ImageField(upload_to='invitations_carrousel', blank=True)
 
     carrousel_img_1 = models.ImageField(upload_to='invitations_carrousel', blank=True)
     carrousel_img_2 = models.ImageField(upload_to='invitations_carrousel', blank=True)
@@ -33,7 +39,10 @@ class InvitationBase(Model):
     carrousel_img_5 = models.ImageField(upload_to='invitations_carrousel', blank=True)
     
     # codigo añadido
-    messages = models.TextField(blank=True, verbose_name="Mensajes")
+    messages_padre = models.TextField(blank=True, null=True, verbose_name="Mensajes")
+    messages_mama = models.TextField(blank=True, null=True, verbose_name="Mensajes")
+    messages_padrino = models.TextField(blank=True, null=True, verbose_name="Mensajes")
+    messages_otro = models.TextField(blank=True, null=True, verbose_name="Mensajes")
      # codigo añadido
      
     def __str__(self):
@@ -54,9 +63,9 @@ class GiftTable(Model):
     amazon_code = CharField(_("Amazon"), blank=True, max_length=100)
     sears_code = CharField(_("Sears"), blank=True, max_length=12)
     palacio_de_hierro_code = CharField(_("Palacio de Hierro"), blank=True, max_length=12)
-    bank_name = CharField(_("Banco"), blank=True, max_length=12)
+    bank_name = CharField(_("Banco"), blank=True, max_length=20)
     bank_image = models.ImageField(upload_to='bank', null=True, blank=True)
-    bank_account = CharField(_("Número de Cuenta"), blank=True, max_length=12)
+    bank_account = CharField(_("Número de Cuenta"), blank=True, max_length=20)
     bank_account_name = CharField(_("Titular de la cuenta"), blank=True, max_length=255)
 
     def __str__(self):
