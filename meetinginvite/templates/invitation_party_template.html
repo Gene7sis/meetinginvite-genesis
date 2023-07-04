@@ -31,8 +31,14 @@
     <link rel="stylesheet" href="{% static 'css-invitation/css/testimonials.css' %}">
 
     <!-- cotador -->
-        <link rel="stylesheet" type="text/css" href="{% static 'css-invitation/css/contador.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css-invitation/css/contador.css' %}" />
 
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("colorSelect").value = localStorage.getItem("colorTexto");
+      });
+    </script>
+        
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -116,18 +122,42 @@
 </div>
   <!-- Carousel End -->
 
+  <div>
+    {% if request.user.is_authenticated %}
+    <div>
+      <form id="color-form">
+        <label for="color-type">Tipo de color:</label>
+        <select id="color-type">
+          <option value="hex">Hexadecimal</option>
+        </select>
+        <div id="color-hex-input">
+          <label for="color-hex">Valor hexadecimal:</label>
+          <input type="text" class="jscolor" id="color-hex">
+        </div>
+        <button type="submit">Cambiar color</button>
+      </form>
+
+      <label for="colorSelect">Color del texto</label>
+      <select id="colorSelect" onchange="cambiarColor()">
+        <option value="blanco">Blanco</option>
+        <option value="negro">Negro</option>
+      </select>
+    </div>
+    {% else %}
+    {% endif %}
+  </div>
 
 <!-- Invitation Persons -->
-<div class="rows mb-5 mb-lg-6" style="background: #121F38; padding-top: 2rem !important; 
-border-top: 7px solid #af5617; 
-border-bottom: 7px solid #af5617;">
+<div class="rows mb-5 mb-lg-6" id="section-2" style="padding-top: 2rem !important; 
+border-top: 7px solid #121F38; 
+border-bottom: 7px solid #121F38;">
   <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
     <img src="{% static 'css-invitation/img/invitacion2.png' %}" alt="" style="width: 90px; height: 90px;
                 ">
     <h2 style="font-family: 'Great Vibes', cursive !important; padding-top: 1rem !important; letter-spacing: 6px;"
-        class="h1 mb-4 text-center text-white"> {{ party.name }} </h2>
-    <h3 style="font-family: 'Great Vibes', cursive !important; letter-spacing: 6px;" class="h1 mb-4 text-white">Invitación válida para {{ party.adult }} adultos</h3>
-    <h5 style="font-family: 'Great Vibes', cursive !important; letter-spacing: 6px;" class="h1 mb-4 text-white">{{ party.comments }}</h5>
+        class="h1 mb-4 text-center {{ colorText }}"> {{ party.name }} </h2>
+    <h3 style="font-family: 'Great Vibes', cursive !important; letter-spacing: 6px;" class="h1 mb-4 {{ colorText }}">Invitación válida para {{ party.adult }} adultos</h3>
+    <h5 style="font-family: 'Great Vibes', cursive !important; letter-spacing: 6px;" class="h1 mb-4 {{ colorText }}">{{ party.comments }}</h5>
   </div>
 </div>
 <!-- Invitation Persons -->
@@ -216,21 +246,21 @@ border-bottom: 7px solid #af5617;">
   <!-- Where and When End -->
 
    <!-- Gallery Start -->
-<div class="container-fluid bg-gallery" id="story" {% if object.invitation.carrousel_img %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ MEDIA_URL }}{{ object.invitation.carrousel_img }}'); padding: 120px 0; margin: 90px 0; border-top: 7px solid #af5617; 
-border-bottom: 7px solid #af5617;" {% else %}style="background-color: red; padding: 120px 0; margin: 90px 0; border-top: 7px solid #af5617; 
+<div class="container-fluid bg-gallery" id="story" {% if object.invitation.carrousel_img %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ MEDIA_URL }}{{ object.invitation.carrousel_img }}'); padding: 120px 0; margin: 90px 0; border-top: 7px solid #121F38; 
+border-bottom: 7px solid #121F38;" {% else %}style="background-color: red; padding: 120px 0; margin: 90px 0; border-top: 7px solid #af5617; 
 border-bottom: 7px solid #af5617;"{% endif %}>
     <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
       
-        <h1 class="font-secondary display-4 text-white" >{{ object.invitation.get_type_event_display}}</h1>
+        <h1 class="font-secondary display-4 text-blanco" >{{ object.invitation.get_type_event_display}}</h1>
       
-        <i class="far fa-heart text-white"></i>
+        <i class="far fa-heart {{ colorText }}"></i>
     </div>
     <div class="owl-carousel gallery-carousel">
       {% if object.invitation.carrousel_img_1 %}
         <div class="gallery-item">
             <img class="img-fluid w-100" src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_1 }}" alt="" >
             <a href="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_1 }}" data-lightbox="gallery" >
-                <i class="fa fa-2x fa-plus text-white"></i>
+                <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
         {% endif %}
@@ -238,7 +268,7 @@ border-bottom: 7px solid #af5617;"{% endif %}>
         <div class="gallery-item">
             <img class="img-fluid w-100" src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_2 }}" alt="">
             <a href="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_2 }}" data-lightbox="gallery">
-                <i class="fa fa-2x fa-plus text-white"></i>
+                <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
         {% endif %}
@@ -246,7 +276,7 @@ border-bottom: 7px solid #af5617;"{% endif %}>
         <div class="gallery-item">
             <img class="img-fluid w-100" src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_3 }}" alt="">
             <a href="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_3 }}" data-lightbox="gallery">
-                <i class="fa fa-2x fa-plus text-white"></i>
+                <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
         {% endif %}
@@ -254,7 +284,7 @@ border-bottom: 7px solid #af5617;"{% endif %}>
         <div class="gallery-item">
             <img class="img-fluid w-100" src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_4 }}" alt="">
             <a href="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_4 }}" data-lightbox="gallery">
-                <i class="fa fa-2x fa-plus text-white"></i>
+                <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
         {% endif %}
@@ -262,14 +292,14 @@ border-bottom: 7px solid #af5617;"{% endif %}>
         <div class="gallery-item">
             <img class="img-fluid w-100" src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_5 }}" alt="">
             <a href="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_5 }}" data-lightbox="gallery">
-                <i class="fa fa-2x fa-plus text-white"></i>
+                <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
         {% endif %}
         <div class="gallery-item">
             <img class="img-fluid w-100" src="{% static 'css-invitation/img/gallery-6.jpg' %}" alt="">
             <a href="{% static 'css-invitation/img/gallery-6.jpg' %}" data-lightbox="gallery">
-                <i class="fa fa-2x fa-plus text-white"></i>
+                <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
     </div>
@@ -336,50 +366,50 @@ border-bottom: 7px solid #af5617;"{% endif %}>
 
 
   <!-- Gifts Start -->
-  <section class="section section-lg" id="event" style="border-top: 7px solid #af5617; 
-        border-bottom: 7px solid #af5617;">
-            <div class="container" style="background: #121F38;">
+  <section class="section section-lg" id="event" style="border-top: 7px solid #121F38; 
+        border-bottom: 7px solid #121F38;">
+            <div class="container color-section">
               <div class="col-12 col-md-9 col-lg-8 text-center mx-auto" >
                 <img src="{% static 'css-invitation/img/regalo2.png' %}" alt="" style="padding-top: 2rem !important; 
                 ">
-                <h2 class="h1 mb-4 text-white" style="padding-top: 1rem !important;">Mesa de regalos</h2>
-                <p class="my-6 font-secondary text-white" style="font-size: 40px; letter-spacing: 6px;">
+                <h2 class="h1 mb-4 {{ colorText }}" style="padding-top: 1rem !important;">Mesa de regalos</h2>
+                <p class="my-6 font-secondary {{ colorText }}" style="font-size: 40px; letter-spacing: 6px;">
                   Tu compañía es, definitivamente, mi mejor regalo. Pero si quieres obsequiarme algo adicional, ésta es
                   una sugerencia:
               </div>
               {% for gifttable in object.invitation.gifttable_set.all %}
               <div class="rows2 justify-content-center mb-0">
-                <div class="text-center palacio mb-5 mb-md-0" style="background: #121F38; width: 600px; padding-top: 1rem !important;">
+                <div class="text-center mb-5 mb-md-0 palacio" style=" width: 600px; padding-top: 2rem !important;" >
+                  <div class="mb-2 mb-md-3">
+                    <a href="https://www.elpalaciodehierro.com/buscar?eventId={{ gifttable.palacio_de_hierro_code }}" target="_blank">
+                      <img src="{% static 'css-invitation/img/palacio.png' %}" class="d-block w-100"
+                         alt="...">
+                    </a>
+                  </div>
+                  <h2 class="h4 {{ colorText }} my-4" style=" letter-spacing: 4px;">{{ gifttable.palacio_de_hierro_code }}</h2>
+                </div>
+                <div class="text-center palacio mb-5 mb-md-0" style=" width: 600px; padding-top: 1rem !important;" id="liverpool">
                   <div class="mb-2 mb-md-3">
                     <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/{{ gifttable.liverpool_code }}" target="_blank">
-                      <img src="{% static 'css-invitation/img/liverpool1.png' %}" class="d-block w-100"
+                      <img src="{% static 'css-invitation/img/liverpool.png' %}" class="d-block w-100"
                            alt="...">
                     </a>
                   </div>
-                  <h2 class="h4 text-white my-4" style="background: #121F38; letter-spacing: 4px;">{{ gifttable.liverpool_code }}</h2>
+                  <h2 class="h4 {{ colorText }} my-4" style="letter-spacing: 4px;">{{ gifttable.liverpool_code }}</h2>
                 </div>
-                <div class="text-center mb-5 mb-md-0 palacio" style="background: #213969; width: 600px; padding-top: 2rem !important;" >
-                  <div class="mb-2 mb-md-3">
-                    <a href="https://www.elpalaciodehierro.com/buscar?eventId={{ gifttable.palacio_de_hierro_code }}" target="_blank">
-                      <img src="{% static 'css-invitation/img/palacio1.png' %}" class="d-block w-100"
-                         alt="...">
-                    </a>
-                  </div>
-                  <h2 class="h4 text-white my-4" style="background: #213969; letter-spacing: 4px;">{{ gifttable.palacio_de_hierro_code }}</h2>
-                </div>
-                <div class="text-center palacio mb-5 mb-md-0" style="background: #121F38; width: 600px; padding-top: 2rem !important;">
+                <div class="text-center palacio mb-5 mb-md-0" style=" width: 600px; padding-top: 2rem !important;">
                   <div class="mb-2 mb-md-3">
                     <a href="https://wap-mesa-regalos.sears.com.mx/evento/{{ gifttable.sears_code }}" target="_blank">
-                      <img src="{% static 'css-invitation/img/sears1.png' %}" class="d-block w-100"
+                      <img src="{% static 'css-invitation/img/sears.png' %}" class="d-block w-100"
                          alt="...">
                     </a>
                   </div>
-                  <h2 class="h4 text-white  my-4" style="background: #121F38; letter-spacing: 4px;">{{ gifttable.sears_code }}</h2>
+                  <h2 class="h4 {{ colorText }}  my-4" style=" letter-spacing: 4px;">{{ gifttable.sears_code }}</h2>
                 </div>
               </div>
             </div>
-            
         </section>
+
 
         <section class="section section-lg" id="event" style="padding-top: 3rem !important; padding-bottom: 3rem !important;" >
             <div class="container">
@@ -420,7 +450,7 @@ border-bottom: 7px solid #af5617;"{% endif %}>
       <section id="testimonials" class="testimonials" style="padding-top: 5rem !important; padding-bottom: 5rem !important;">
                   <div class="testimonial-item">
                     <h3><span class="h1 icon-tertiary"><span><img src="{% static 'css-invitation/img/instagram-white.svg' %}" alt="Bootstrap" width="84" height="84"></span></span></h3> <br>
-                    <h3 style="font-family: 'Great Vibes', cursive !important;">#MISXV</h3>
+                    <h3 style="font-family: 'Great Vibes', cursive !important;" class="{{ colorText }}">#{{ object.invitation.get_type_event_display}}</h3>
                   </div>
       </section>
 <!-- ======= IG Section ======= -->
@@ -430,15 +460,23 @@ border-bottom: 7px solid #af5617;"{% endif %}>
   <div class="testimonial-items">
       <div class="card-confirm shadow border-gray-300">
         <div class="card-body-confirm">
-          <h2 class="font-secondary display-3 text-center text-white" style="letter-spacing: 8px; font-weight: bold;">Confirmar <br> asistencia</h2>
-          <h4 class="text-center text-white" style="line-height: 1.5;">Favor de hacer click en el botón de abajo para confirmar su asistencia con su nombre completo en la presente invitación a Chandelier eventos. </h4> <br>
-          <a href="https://api.whatsapp.com/send?phone=5219934294179&text=Confirmo asistencia al evento de Estefanía. Mi Nombre es"
-             style="display: inline-block; padding:16px; border-radius: 8px; background-color: #25D366; color: #fff; text-decoration: none; font-family: sans-serif; font-size: 25px;"><img src="{% static 'css-invitation/img/whats.gif' %}" width="45px" alt=""> Confirmar ahora</a>
+          <h2 class="font-secondary display-3 text-center" style="letter-spacing: 8px; font-weight: bold; color: white;">Confirmar <br> asistencia</h2>
+          {% for confirmationwhatsapp in object.invitation.confirmationwhatsapp_set.all %}
+          <h4 class="text-center" style="line-height: 1.5; color: white;">Favor de hacer click en el botón de abajo para confirmar su asistencia con su nombre completo en la presente invitación a Chandelier eventos. </h4> <br>
+          <a href="https://api.whatsapp.com/send?phone=521{{ confirmationwhatsapp.phone_number }}&text={{ confirmationwhatsapp.default_message }}"
+             style="display: inline-block; padding:16px; border-radius: 8px; background-color: #25D366; color: #fff; text-decoration: none; font-family: sans-serif; font-size: 25px;" target="_blank"><img src="{% static 'css-invitation/img/whats.gif' %}" width="45px" alt=""> Confirmar ahora</a>
+          {% endfor %}
         </div>
       </div>
     </div>
 </section>
 <!-- Confirmation Section -->
+
+{% block footer %}
+
+{% include 'invitation/footer.html' %}
+
+{% endblock footer %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 
@@ -479,12 +517,6 @@ border-bottom: 7px solid #af5617;"{% endif %}>
 
   </script>
 
-
-    {% block footer %}
-
-        {% include 'invitation/footer.html' %}
-
-    {% endblock footer %}
 
     {% include 'invitation/scripts.html' %}
 

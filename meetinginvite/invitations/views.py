@@ -40,8 +40,21 @@ class InvitationCodeDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = datetime.now()
-
-
+        
+         # Accessing the GET query parameters
+        param1 = self.request.GET.get('colorTexto')
+        
+        if(param1 == "blanco"):
+            color = "text-white"
+        else:
+            color = "text-black"
+            
+        # Add the parameters to the context
+        context['colorText'] = color
+    
+        print(param1)
+        print(color)
+        
         return context
     
 

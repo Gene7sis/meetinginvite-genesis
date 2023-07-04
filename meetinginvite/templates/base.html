@@ -91,134 +91,7 @@
       {% include 'layouts/layoutbase.html' %}
       
       {% include 'layouts/carrusel.html' %}
-      {% if request.user.is_authenticated %}
-      <div>
-        <form id="color-form">
-          <span>Selecciona un color de la lista: </span>
-          <select id="color-type">
-            <option value="name">Nombre del color en inglés</option>
-            <option value="hex">Valor hexadecimal</option>
-            <option value="rgb">Valor RGB</option>
-          </select>
-          <div id="color-input-container">
-            <input type="text" id="color-name" placeholder="Escribe el nombre del color en inglés" />
-            <input type="text" id="color-hex" placeholder="Escribe el valor hexadecimal" style="display: none;" />
-            <input type="text" id="color-rgb" placeholder="Escribe el valor RGB" style="display: none;" />
-          </div>
-          <input type="submit" value="Cambiar el fondo!" />
-        </form>
-
-        <select id="font-selector">
-          <option value="Arial">Arial</option>
-          <option value="Verdana">Verdana</option>
-          <option value="Times New Roman">Times New Roman</option>
-        </select>
       
-        <script>
-          // Obtener el color seleccionado de la URL
-          var urlParams = new URLSearchParams(window.location.search);
-          var colorType = urlParams.get("type");
-          var colorValue = urlParams.get("value");
-        
-          if (colorType && colorValue) {
-            setColor(colorType, colorValue);
-          }
-        
-          // Evento de cambio del tipo de color
-          document.getElementById("color-type").addEventListener("change", function(event) {
-            var selectedType = event.target.value;
-            showColorInput(selectedType);
-          });
-        
-          // Evento de envío del formulario
-          document.getElementById("color-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            var selectedType = document.getElementById("color-type").value;
-            var selectedValue = "";
-        
-            if (selectedType === "name") {
-              selectedValue = document.getElementById("color-name").value;
-            } else if (selectedType === "hex") {
-              selectedValue = document.getElementById("color-hex").value;
-            } else if (selectedType === "rgb") {
-              selectedValue = document.getElementById("color-rgb").value;
-            }
-        
-            setColor(selectedType, selectedValue);
-            updateURL(selectedType, selectedValue);
-          });
-        
-          // Mostrar el campo de entrada de color correspondiente al tipo seleccionado
-          function showColorInput(type) {
-            var nameInput = document.getElementById("color-name");
-            var hexInput = document.getElementById("color-hex");
-            var rgbInput = document.getElementById("color-rgb");
-        
-            if (type === "name") {
-              nameInput.style.display = "block";
-              hexInput.style.display = "none";
-              rgbInput.style.display = "none";
-            } else if (type === "hex") {
-              nameInput.style.display = "none";
-              hexInput.style.display = "block";
-              rgbInput.style.display = "none";
-            } else if (type === "rgb") {
-              nameInput.style.display = "none";
-              hexInput.style.display = "none";
-              rgbInput.style.display = "block";
-            }
-          }
-        
-          // Establecer el color de fondo del body
-          function setColor(type, value) {
-            var body = document.body;
-        
-            if (type === "name") {
-              body.style.backgroundColor = value;
-            } else if (type === "hex") {
-              body.style.backgroundColor = "#" + value;
-            } else if (type === "rgb") {
-              body.style.backgroundColor = "rgb(" + value + ")";
-            }
-          }
-        
-          // Actualizar la URL con los parámetros seleccionados
-          function updateURL(type, value) {
-            var url = window.location.href.split("?")[0];
-            var newURL = url + "?type=" + type + "&value=" + value;
-            window.history.replaceState({}, "", newURL);
-          }
-
-            // Obtener la fuente seleccionada del almacenamiento local
-  var selectedFont = localStorage.getItem("selectedFont");
-
-  if (selectedFont) {
-    setFont(selectedFont);
-    updateFontSelector(selectedFont);
-  }
-
-  // Evento de cambio de la fuente
-  document.getElementById("font-selector").addEventListener("change", function(event) {
-    var font = event.target.value;
-    setFont(font);
-    localStorage.setItem("selectedFont", font);
-  });
-
-  // Establecer la fuente del body
-  function setFont(font) {
-    var body = document.body;
-    body.style.fontFamily = font;
-  }
-
-  // Actualizar la selección del font selector
-  function updateFontSelector(font) {
-    var fontSelector = document.getElementById("font-selector");
-    fontSelector.value = font;
-  }
-        </script>
-      </div> 
-      {% else %}
-      {% endif %}
       <!-- About Me-->
     <div class="invitation-info">
       <section class="section section-md">
@@ -385,5 +258,108 @@
     <!-- Javascript-->
     <script src="{% static 'base/js/core.min.js' %}"></script>
     <script src="{% static 'base/js/script.js' %}"></script>
+
+    <script>
+      // Obtener el color seleccionado de la URL
+      var urlParams = new URLSearchParams(window.location.search);
+      var colorType = urlParams.get("type");
+      var colorValue = urlParams.get("value");
+    
+      if (colorType && colorValue) {
+        setColor(colorType, colorValue);
+      }
+    
+      // Evento de cambio del tipo de color
+      document.getElementById("color-type").addEventListener("change", function(event) {
+        var selectedType = event.target.value;
+        showColorInput(selectedType);
+      });
+    
+      // Evento de envío del formulario
+      document.getElementById("color-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var selectedType = document.getElementById("color-type").value;
+        var selectedValue = "";
+    
+        if (selectedType === "name") {
+          selectedValue = document.getElementById("color-name").value;
+        } else if (selectedType === "hex") {
+          selectedValue = document.getElementById("color-hex").value;
+        } else if (selectedType === "rgb") {
+          selectedValue = document.getElementById("color-rgb").value;
+        }
+    
+        setColor(selectedType, selectedValue);
+        updateURL(selectedType, selectedValue);
+      });
+    
+      // Mostrar el campo de entrada de color correspondiente al tipo seleccionado
+      function showColorInput(type) {
+        var nameInput = document.getElementById("color-name");
+        var hexInput = document.getElementById("color-hex");
+        var rgbInput = document.getElementById("color-rgb");
+    
+        if (type === "name") {
+          nameInput.style.display = "block";
+          hexInput.style.display = "none";
+          rgbInput.style.display = "none";
+        } else if (type === "hex") {
+          nameInput.style.display = "none";
+          hexInput.style.display = "block";
+          rgbInput.style.display = "none";
+        } else if (type === "rgb") {
+          nameInput.style.display = "none";
+          hexInput.style.display = "none";
+          rgbInput.style.display = "block";
+        }
+      }
+    
+      // Establecer el color de fondo del body
+      function setColor(type, value) {
+        var body = document.body;
+    
+        if (type === "name") {
+          body.style.backgroundColor = value;
+        } else if (type === "hex") {
+          body.style.backgroundColor = "#" + value;
+        } else if (type === "rgb") {
+          body.style.backgroundColor = "rgb(" + value + ")";
+        }
+      }
+    
+      // Actualizar la URL con los parámetros seleccionados
+      function updateURL(type, value) {
+        var url = window.location.href.split("?")[0];
+        var newURL = url + "?type=" + type + "&value=" + value;
+        window.history.replaceState({}, "", newURL);
+      }
+
+        // Obtener la fuente seleccionada del almacenamiento local
+var selectedFont = localStorage.getItem("selectedFont");
+
+if (selectedFont) {
+setFont(selectedFont);
+updateFontSelector(selectedFont);
+}
+
+// Evento de cambio de la fuente
+document.getElementById("font-selector").addEventListener("change", function(event) {
+var font = event.target.value;
+setFont(font);
+localStorage.setItem("selectedFont", font);
+});
+
+// Establecer la fuente del body
+function setFont(font) {
+var body = document.body;
+body.style.fontFamily = font;
+}
+
+// Actualizar la selección del font selector
+function updateFontSelector(font) {
+var fontSelector = document.getElementById("font-selector");
+fontSelector.value = font;
+}
+    </script>
   </body>
 </html>
