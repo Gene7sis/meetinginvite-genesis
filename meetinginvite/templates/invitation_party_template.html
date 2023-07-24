@@ -32,11 +32,21 @@
 
     <!-- cotador -->
     <link rel="stylesheet" type="text/css" href="{% static 'css-invitation/css/contador.css' %}" />
+    
 
     <script>
       window.addEventListener("DOMContentLoaded", function() {
         document.getElementById("colorSelect").value = localStorage.getItem("colorTexto");
       });
+
+      window.addEventListener("DOMContentLoaded", function() {
+        var colorValue = localStorage.getItem("backgroundColor");
+        var colorHexInput = document.getElementById("color-hex");
+        if (colorValue) {
+          colorHexInput.value = "#" + colorValue;
+        }
+      });
+
     </script>
         
 </head>
@@ -59,8 +69,9 @@
                   {% else %}
                   <img class="position-absolute w-100 h-100" src="https://img.freepik.com/vector-gratis/fondo-mancha-acuarela-color-pastel_52683-12283.jpg?w=2000" style="object-fit: cover;">
                   {% endif %}
+                  
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                      <div class="p-3" style="max-width: 900px;">
+                      <div class="p-3" style="max-width: 900px; margin-top: 90px;">
                           <div class="row">
                       <!-- DAYS -->
                       <div class="col-md-3 col-sm-3 col-xs-6 dash-glob" data-scroll-reveal="enter bottom move 25px, after 0.3s">
@@ -143,6 +154,7 @@
         <option value="negro">Negro</option>
       </select>
     </div>
+
     {% else %}
     {% endif %}
   </div>
@@ -152,8 +164,11 @@
 border-top: 7px solid #121F38; 
 border-bottom: 7px solid #121F38;">
   <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
-    <img src="{% static 'css-invitation/img/invitacion2.png' %}" alt="" style="width: 90px; height: 90px;
-                ">
+    {% if colorText == "text-white" %}
+    <img src="{% static 'css-invitation/img/invitacion-blanco.png' %}" alt="" style="width: 90px; height: 90px;">
+    {% else %}
+    <img src="{% static 'css-invitation/img/invitacion.png' %}" alt="" style="width: 90px; height: 90px;">
+    {% endif %}
     <h2 style="font-family: 'Great Vibes', cursive !important; padding-top: 1rem !important; letter-spacing: 6px;"
         class="h1 mb-4 text-center {{ colorText }}"> {{ party.name }} </h2>
     <h3 style="font-family: 'Great Vibes', cursive !important; letter-spacing: 6px;" class="h1 mb-4 {{ colorText }}">Invitación válida para {{ party.adult }} adultos</h3>
@@ -253,7 +268,7 @@ border-bottom: 7px solid #af5617;"{% endif %}>
       
         <h1 class="font-secondary display-4 text-blanco" >{{ object.invitation.get_type_event_display}}</h1>
       
-        <i class="far fa-heart {{ colorText }}"></i>
+        <i class="far fa-heart text-blanco"></i>
     </div>
     <div class="owl-carousel gallery-carousel">
       {% if object.invitation.carrousel_img_1 %}
@@ -296,12 +311,14 @@ border-bottom: 7px solid #af5617;"{% endif %}>
             </a>
         </div>
         {% endif %}
+        {% if object.invitation.carrousel_img_6 %}
         <div class="gallery-item">
-            <img class="img-fluid w-100" src="{% static 'css-invitation/img/gallery-6.jpg' %}" alt="">
-            <a href="{% static 'css-invitation/img/gallery-6.jpg' %}" data-lightbox="gallery">
+            <img class="img-fluid w-100" src="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_6 }}" alt="">
+            <a href="{{ MEDIA_URL }}{{ object.invitation.carrousel_img_6 }}" data-lightbox="gallery">
                 <i class="fa fa-2x fa-plus {{ colorText }}"></i>
             </a>
         </div>
+        {% endif %}
     </div>
 </div>
 <!-- Gallery End -->
@@ -309,18 +326,18 @@ border-bottom: 7px solid #af5617;"{% endif %}>
 <!-- Messages Start -->
     <div class="container-fluid py-5" id="family">
       <div class="container pt-5 pb-3">
-          <div class="section-title position-relative text-center">
+          <div class="section-title position-relative text-center just">
               <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Mensajes</h6>
               <h1 class="font-secondary h1" style="letter-spacing: 8px; font-size: 50px;">Amigos y Familia</h1>
               <i class="far fa-heart text-dark"></i>
           </div>
-          <div class="row portfolio-container position-relative text-center">
+          <div class="row portfolio-container position-relative text-center justify-content-center">
             {% if object.invitation.messages_padre %}
               <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
-                  <div class="position-center mb-2">
+                  <div class="position-relative mb-2">
                       <div class="bg-secondary text-center p-4">
-                          <h4 class="mb-3">Padre</h4>
-                          <p  class="justify-content-center">{{ object.invitation.messages_padre}}</p>
+                          <h4 class="mb-3" style="margin-top: 10px;">Padre</h4>
+                          <p  class="justify-content-center" style="margin-top: 20px;">{{ object.invitation.messages_padre}}</p>
                       </div>
                   </div>
               </div>
@@ -330,8 +347,8 @@ border-bottom: 7px solid #af5617;"{% endif %}>
               <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
                   <div class="position-relative mb-2">
                       <div class="bg-secondary text-center p-4">
-                          <h4 class="mb-3">Madre</h4>
-                          <p class="justify-content-center">{{ object.invitation.messages_mama }}</p>
+                          <h4 class="mb-3" style="margin-top: 10px;">Madre</h4>
+                          <p class="justify-content-center" style="margin-top: 20px;">{{ object.invitation.messages_mama }}</p>
                       </div>
                   </div>
               </div>
@@ -341,19 +358,19 @@ border-bottom: 7px solid #af5617;"{% endif %}>
               <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
                   <div class="position-relative mb-2">
                       <div class="bg-secondary text-center p-4">
-                          <h4 class="mb-3">Padrino</h4>
-                          <p class="justify-content-center">{{ object.invitation.messages_padrino }}</p>
+                          <h4 class="mb-3" style="margin-top: 10px;">Padrino</h4>
+                          <p class="justify-content-center" style="margin-top: 20px;">{{ object.invitation.messages_padrino }}</p>
                       </div>
                   </div>
               </div>
               {% else %}
               {% endif %}
               {% if object.invitation.messages_otro %}
-              <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+              <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
                   <div class="position-relative mb-2">
                       <div class="bg-secondary text-center p-4">
-                          <h4 class="mb-3">Padrino</h4>
-                          <p class="justify-content-center">{{ object.invitation.messages_otro }}</p>
+                          <h4 class="mb-3" style="margin-top: 10px;">Madrina</h4>
+                          <p class="justify-content-center" style="margin-top: 20px;">{{ object.invitation.messages_otro }}</p>
                       </div>
                   </div>
               </div>
@@ -370,10 +387,15 @@ border-bottom: 7px solid #af5617;"{% endif %}>
         border-bottom: 7px solid #121F38;">
             <div class="container color-section">
               <div class="col-12 col-md-9 col-lg-8 text-center mx-auto" >
-                <img src="{% static 'css-invitation/img/regalo2.png' %}" alt="" style="padding-top: 2rem !important; 
+                {% if colorText == "text-white" %}
+                <img src="{% static 'css-invitation/img/regalo-blanco.png' %}" alt="" style="padding-top: 2rem !important; 
                 ">
-                <h2 class="h1 mb-4 {{ colorText }}" style="padding-top: 1rem !important;">Mesa de regalos</h2>
-                <p class="my-6 font-secondary {{ colorText }}" style="font-size: 40px; letter-spacing: 6px;">
+                {% else %}
+                <img src="{% static 'css-invitation/img/regalo.png' %}" alt="" style="padding-top: 2rem !important; width: 128px; height: 160px;
+                ">
+                {% endif %}
+                <h2 class="h1 mb-4 {{ colorText }}" style="padding-top: 1rem !important; letter-spacing: 6px;">Mesa de regalos</h2>
+                <p class="h1 my-6 font-secondary {{ colorText }}" style="font-family: 'Great Vibes', cursive !important; font-size: 40px; letter-spacing: 6px;">
                   Tu compañía es, definitivamente, mi mejor regalo. Pero si quieres obsequiarme algo adicional, ésta es
                   una sugerencia:
               </div>
@@ -415,7 +437,7 @@ border-bottom: 7px solid #af5617;"{% endif %}>
             <div class="container">
               <div class="col-12 col-md-9 col-lg-8 text-center mx-auto">
                 <h2 class="h1 mb-4 ">Datos bancarios para transferencia</h2>
-                <p class="font-secondary my-6 " style="font-size: 45px; letter-spacing: 3px;">
+                <p class="font-secondary my-6 h1" style="font-size: 45px; letter-spacing: 6px;">
                   ¿No tienes idea de que regalarme? “Lluvia de sobres” es una tradición de regalar dinero en efectivo a la
                   quinceañera.</p>
               </div>
@@ -449,7 +471,11 @@ border-bottom: 7px solid #af5617;"{% endif %}>
 <!-- ======= IG Section ======= -->
       <section id="testimonials" class="testimonials" style="padding-top: 5rem !important; padding-bottom: 5rem !important;">
                   <div class="testimonial-item">
+                    {% if colorText == "text-white" %}
                     <h3><span class="h1 icon-tertiary"><span><img src="{% static 'css-invitation/img/instagram-white.svg' %}" alt="Bootstrap" width="84" height="84"></span></span></h3> <br>
+                    {% else %}
+                    <h3><span class="h1 icon-tertiary"><span><img src="{% static 'css-invitation/img/instagram-black.png' %}" alt="Bootstrap" width="84" height="84"></span></span></h3> <br>
+                    {% endif %}
                     <h3 style="font-family: 'Great Vibes', cursive !important;" class="{{ colorText }}">#{{ object.invitation.get_type_event_display}}</h3>
                   </div>
       </section>

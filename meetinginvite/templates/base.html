@@ -1,4 +1,5 @@
 {% load static i18n compress%}<!DOCTYPE html>
+{% load bootstrap5 %}
 
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
@@ -13,7 +14,10 @@
     />
     <meta name="author" content="Miguel Alber Cordova Dominguez" />
 
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <!-- plantilla -->
+
 
     <link
       rel="icon"
@@ -28,6 +32,8 @@
     />
     <link rel="stylesheet" href="{% static 'base/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'base/css/style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  
     <style>
       .ie-panel {
         display: none;
@@ -86,107 +92,75 @@
   </head>
 
   <body >
-    <div class="page">
       <!-- Page header-->
       {% include 'layouts/layoutbase.html' %}
       
       {% include 'layouts/carrusel.html' %}
       
       <!-- About Me-->
-    <div class="invitation-info">
+    <div class="invitation-info" style="background-color: #EFF0F2; padding-bottom: 60px;" >
       <section class="section section-md">
         <div class="shell">
-          <p class="heading-1">¿Qué son las invitaciones digitales?</p>
+          <h3 style="font-family: 'Playfair Display', serif; letter-spacing: 2px;  font-weight: normal;   font-style: italic;">¿Qué son las invitaciones digitales?</h3>
           <div class="range range-50 range-sm-center range-md-left range-md-middle range-md-reverse">
-            <div class="cell-sm-6 wow fadeInRightSmall">
-              <div class="thumb-line"><img src="{% static 'base/images/home1-1-961x664.jpg' %}" alt="" width="961" height="664"/>
-              </div>
-            </div>
-            <div class="cell-sm-6">
-              <div class="box-width-3">
-                
                 <article class="quote-big wow fadeInLeftSmall" data-wow-delay=".1s">
-                  <p class="q">I’ve been working as a professional wedding photographer all my adult life.</p>
+                  <p style="font-family: 'Montserrat', sans-serif, Arial, sans-serif; font-size: 20px; font-style: italic; margin-bottom: 23px;">Es la invitación de tu boda, igual de bonita, igual de especial, pero con un mundo de muchas más posibilidades y aplicaciones. Esta nueva alternativa es una manera moderna, original, dinámica y eficaz para invitar a tus seres queridos a tu gran día.</p>
+                  <div class="divider wow fadeInLeftSmall" data-wow-delay=".2s"></p>
+                    <a class="button button-default-outline" href="#" style="color: #212121; margin-top: 40px; letter-spacing: 2px; border-color: #8e8e8e !important; ">Ver ejemplo</a>
+                  </div>
                 </article>
-                <div class="divider wow fadeInLeftSmall" data-wow-delay=".2s"></div>
-                <p class="wow fadeInLeftSmall" data-wow-delay=".3s">My name is Susan Parker, and I have been a professional wedding photographer since 2005. On this website you can take a look at my latest photos or order a photo session for yourself or your family.</p>
               </div>
-            </div>
           </div>
-        </div>
       </section>
-    </div>
 
       <!-- My Best Photos -->
-      <section class="section text-center">
+      <section class="section text-center" style="background-color: #E7DED7; margin-top:60px;" >
+        <div style="height: 50px;"></div>
         <div>
-        <h5>¿Cómo se ven las invitaciones digitales?</h5>
+        <h3 style="font-family: 'Playfair Display', serif; letter-spacing: 2px;  font-weight: normal; font-style: italic;">¿Cómo se ven las invitaciones digitales?</h3>
         </div>
         <!-- Slick Carousel-->
-        <div class="slick-wrap">
-          <div class="slick-slider slick-style-1" data-arrows="true" data-autoplay="true" data-loop="true" data-dots="true" data-swipe="true" data-xs-swipe="true" data-sm-swipe="false" data-items="1" data-sm-items="3" data-md-items="3" data-lg-items="3" data-center-mode="true" data-lightgallery="group-slick">
-            <div class="item">
-              <div class="slick-slide-inner">
-                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/group-image-4-1200x800-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-1-961x664.jpg' %}" alt="" width="961" height="664"/>
-                    <div class="thumb-ann__caption"> 
-                      <p class="thumb-ann__title heading-3">Image #1</p>
-                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
-                    </div></a>
-                </div>
-              </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'base/images/carrusel.png' %}" class="d-block w-100" alt="...">
             </div>
-            <div class="item">
-              <div class="slick-slide-inner">
-                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/group-image-3-1200x800-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-2-961x664.jpg' %}" alt="" width="961" height="664"/>
-                    <div class="thumb-ann__caption"> 
-                      <p class="thumb-ann__title heading-3">Image #2</p>
-                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
-                    </div></a>
-                </div>
-              </div>
+            <div class="carousel-item">
+              <img src="{% static 'base/images/carrusel.png' %}" class="d-block w-100" alt="...">
             </div>
-            <div class="item">
-              <div class="slick-slide-inner">
-                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/home1-4-1200x695-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-3-961x664.jpg' %}" alt="" width="961" height="664"/>
-                    <div class="thumb-ann__caption"> 
-                      <p class="thumb-ann__title heading-3">Image #3</p>
-                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
-                    </div></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="slick-slide-inner">
-                <div class="slick-slide-caption"><a class="thumb-ann thumb-mixed_large" href="{% static 'base/images/group-image-2-1200x800-original.jpg' %}" data-lightgallery="item"><img class="thumb-ann__image" src="{% static 'base/images/home1-4-961x664.jpg' %}" alt="" width="961" height="664"/>
-                    <div class="thumb-ann__caption"> 
-                      <p class="thumb-ann__title heading-3">Image #4</p>
-                      <p class="thumb-ann__text">With the experience of more than 10 years, I am glad to offer you a wide variety of love story photography services at affordable prices.</p>
-                    </div></a>
-                </div>
-              </div>
+            <div class="carousel-item">
+              <img src="{% static 'base/images/carrusel.png' %}" class="d-block w-100" alt="...">
             </div>
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </section>
     </div>
+  
 
+    
     <!-- Eventos -->
-    <section class="section section-md">
+    <section class="section section-md" style="background-color: #EFF0F2;">
       <div class="shell">
         <div class="range range-50 range-sm-center range-md-left">
           <div class="cell-sm-6 cell-md-5">
-            <div class="thumb-bordered"><img src="{% static 'base/images/Imagen2.png' %}" alt=""/>
+            <div class=""><img src="{% static 'base/images/eventos.png' %}" alt=""/>
             </div>
           </div>
           <div class="cell-sm-6 cell-md-7">
             <div class="box-width-3 box-centered">
               <article class="quote-big">
-                <p class="q">MeetingInvitation <br> Celebra tus eventos con invitaciones únicas y especiales.</p>
+                <p style="font-family: 'Montserrat', sans-serif, Arial, sans-serif; font-size: 25px; font-style: italic; margin-bottom: 23px; ">MeetingInvitation <br> Celebra tus eventos con invitaciones únicas y especiales.</p>
               </article>
               <div class="divider"></div>
-              <p class="text-spacing-05"> ✦ Bodas <br> ✧ XV años <br> ✦ Baby shower <br> ✧ Fiestas infantiles <br> ✦ Graduaciones</p>
-
-              
+              <p class="text-spacing-05" style="font-family: 'Montserrat', sans-serif, Arial, sans-serif; font-style: italic; font-size: 20px;"> ✦ Bodas <br> ✧ XV años <br> ✦ Baby shower <br> ✧ Fiestas infantiles <br> ✦ Graduaciones <br> ✧ Fiestas infantiles</p>
             </div>
           </div>
         </div>
@@ -196,15 +170,24 @@
     {% include 'layouts/partesinvitacion.html' %}
 
      <!-- QUIENES SOMOS -->
-     <section class="section section-sm text-center"> 
-      <div class="shell">
-        <div class="range range-50 range-sm-center">
-          <div class="cell-md-10 cell-lg-9">
-            <h1>¿Quienes somos?</h1>
-            <p>In my portfolio, there are hundreds of successful photo shoots and dozens of satisfied customers. All of the couples I’ve been working with were more than satisfied with my works. Check out the gallery to learn more about my skills and style.</p>
+      <section class="section section-md" style="background-color: #EFF0F2;">
+        <div class="shell">
+          <div class="range range-50 range-sm-center range-md-left">
+            <div class="cell-sm-6 cell-md-8">
+              <div class="box-width-3 box-centered">
+                <article class="quote-big">
+                  <h3 style="font-family: 'Playfair Display', serif; letter-spacing: 2px;  font-weight: normal; font-style: italic;">¿Quiénes somos?</h3>
+                </article>
+                <div class="divider"></div>
+                <p style="font-family: 'Montserrat', sans-serif, Arial, sans-serif; font-size: 18px; font-style: italic; margin-bottom: 23px;">En MeetingInvite, creamos invitaciones digitales personalizadas para eventos especiales. Nuestro equipo de diseñadores transforma tus ideas en invitaciones únicas y atractivas. Simplificamos el proceso y te ofrecemos comodidad y flexibilidad. Únete a nuestra comunidad y haz que tus eventos sean inolvidables desde el principio.</p>
+              </div>
+            </div>
+            <div class="cell-sm-6 cell-md-4">
+              <div class="thumb-bordered"><img src="{% static 'base/images/quienes-somos.jpg' %}" alt=""/>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
       </section>
 
 
@@ -259,107 +242,5 @@
     <script src="{% static 'base/js/core.min.js' %}"></script>
     <script src="{% static 'base/js/script.js' %}"></script>
 
-    <script>
-      // Obtener el color seleccionado de la URL
-      var urlParams = new URLSearchParams(window.location.search);
-      var colorType = urlParams.get("type");
-      var colorValue = urlParams.get("value");
-    
-      if (colorType && colorValue) {
-        setColor(colorType, colorValue);
-      }
-    
-      // Evento de cambio del tipo de color
-      document.getElementById("color-type").addEventListener("change", function(event) {
-        var selectedType = event.target.value;
-        showColorInput(selectedType);
-      });
-    
-      // Evento de envío del formulario
-      document.getElementById("color-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        var selectedType = document.getElementById("color-type").value;
-        var selectedValue = "";
-    
-        if (selectedType === "name") {
-          selectedValue = document.getElementById("color-name").value;
-        } else if (selectedType === "hex") {
-          selectedValue = document.getElementById("color-hex").value;
-        } else if (selectedType === "rgb") {
-          selectedValue = document.getElementById("color-rgb").value;
-        }
-    
-        setColor(selectedType, selectedValue);
-        updateURL(selectedType, selectedValue);
-      });
-    
-      // Mostrar el campo de entrada de color correspondiente al tipo seleccionado
-      function showColorInput(type) {
-        var nameInput = document.getElementById("color-name");
-        var hexInput = document.getElementById("color-hex");
-        var rgbInput = document.getElementById("color-rgb");
-    
-        if (type === "name") {
-          nameInput.style.display = "block";
-          hexInput.style.display = "none";
-          rgbInput.style.display = "none";
-        } else if (type === "hex") {
-          nameInput.style.display = "none";
-          hexInput.style.display = "block";
-          rgbInput.style.display = "none";
-        } else if (type === "rgb") {
-          nameInput.style.display = "none";
-          hexInput.style.display = "none";
-          rgbInput.style.display = "block";
-        }
-      }
-    
-      // Establecer el color de fondo del body
-      function setColor(type, value) {
-        var body = document.body;
-    
-        if (type === "name") {
-          body.style.backgroundColor = value;
-        } else if (type === "hex") {
-          body.style.backgroundColor = "#" + value;
-        } else if (type === "rgb") {
-          body.style.backgroundColor = "rgb(" + value + ")";
-        }
-      }
-    
-      // Actualizar la URL con los parámetros seleccionados
-      function updateURL(type, value) {
-        var url = window.location.href.split("?")[0];
-        var newURL = url + "?type=" + type + "&value=" + value;
-        window.history.replaceState({}, "", newURL);
-      }
-
-        // Obtener la fuente seleccionada del almacenamiento local
-var selectedFont = localStorage.getItem("selectedFont");
-
-if (selectedFont) {
-setFont(selectedFont);
-updateFontSelector(selectedFont);
-}
-
-// Evento de cambio de la fuente
-document.getElementById("font-selector").addEventListener("change", function(event) {
-var font = event.target.value;
-setFont(font);
-localStorage.setItem("selectedFont", font);
-});
-
-// Establecer la fuente del body
-function setFont(font) {
-var body = document.body;
-body.style.fontFamily = font;
-}
-
-// Actualizar la selección del font selector
-function updateFontSelector(font) {
-var fontSelector = document.getElementById("font-selector");
-fontSelector.value = font;
-}
-    </script>
   </body>
 </html>

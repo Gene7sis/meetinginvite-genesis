@@ -51,10 +51,7 @@ class InvitationCodeDetailView(DetailView):
             
         # Add the parameters to the context
         context['colorText'] = color
-    
-        print(param1)
-        print(color)
-        
+       
         return context
     
 

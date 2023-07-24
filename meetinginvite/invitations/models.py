@@ -37,6 +37,7 @@ class InvitationBase(Model):
     carrousel_img_3 = models.ImageField(upload_to='invitations_carrousel', blank=True)
     carrousel_img_4 = models.ImageField(upload_to='invitations_carrousel', blank=True)
     carrousel_img_5 = models.ImageField(upload_to='invitations_carrousel', blank=True)
+    carrousel_img_6 = models.ImageField(upload_to='invitations_carrousel', blank=True)
     
     # codigo añadido
     messages_padre = models.TextField(blank=True, null=True, verbose_name="Mensajes")

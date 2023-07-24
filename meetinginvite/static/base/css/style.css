@@ -170,13 +170,8 @@ body {
 }
 
 a {
-	color: #00bd9d;
 	text-decoration: none;
 	transition: .25s;
-}
-
-a:focus {
-	color: #00bd9d;
 }
 
 a:focus, a:hover {
@@ -184,20 +179,12 @@ a:focus, a:hover {
 	outline: none;
 }
 
-a:hover {
-	color: #00715d;
-}
-
 a[href*='callto'], a[href*='mailto'] {
 	white-space: nowrap;
 }
 
-.link-hover {
-	color: #00715d;
-}
-
-.link-active {
-	color: #00715d;
+.rd-navbar-main a:hover{
+	color: #fff !important;
 }
 
 img {
@@ -374,6 +361,17 @@ h6,
 .big {
 	font-size: 16px;
 	line-height: 1.7;
+}
+
+
+.tw{
+	color: #fff !important;
+}
+
+.inv-parts{
+	font-family: 'Playfair Display', serif;
+	letter-spacing: 1px;
+	font-size: 25px;
 }
 
 @media (min-width: 768px) {
@@ -1717,15 +1715,15 @@ a.box-triangle__aside:hover .box-triangle__image {
 }
 
 .button-default-outline, .button-default-outline:focus {
-	color: #2d2d2d;
+	color: #000000 !important;
 	background-color: transparent;
-	border-color: #ccc;
+	border-color: #000 !important;
 }
 
 .button-default-outline:hover, .button-default-outline:active {
-	color: #ffffff;
-	background-color: #00bd9d;
-	border-color: #00bd9d;
+	color: #ffffff !important;
+	background-color: #000000 !important;
+	border-color: #ffffff !important;
 }
 
 .button-default-outline.button-ujarak:hover {
@@ -7689,9 +7687,6 @@ html .page .group-sm-justify .button {
 * Light Backgrounds
 */
 
-.section .section-md .background{
-	background-color: #712323;
-}
 
 .bg-white[class*='section-'] + .bg-white[class*='section-'] {
 	padding-top: 0;
@@ -7965,7 +7960,7 @@ html .page .group-sm-justify .button {
 	background-color: transparent;
 }
 
-.bg-image-dark .button-default-outline.button-anis::before, .bg-image-dark .button-default-outline.button-anis::after {
+.bg-image-dark .button-anis::before, .bg-image-dark .button-default-outline.button-anis::after {
 	background: #ffffff;
 }
 
@@ -8000,7 +7995,6 @@ html .page .group-sm-justify .button {
 }
 
 .section-sm,
-.section-md,
 .section-lg,
 .section-xl,
 .section-xxl,
@@ -8041,6 +8035,7 @@ html [class*='section-'].section-bottom-0 {
 	section.section-xl:first-of-type,
 	section.section-xxl:first-of-type {
 		padding-top: 40px;
+		padding-bottom: 40px;
 	}
 }
 
